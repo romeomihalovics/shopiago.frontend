@@ -1,0 +1,409 @@
+[
+	{
+		"name": "János SZABÓ",
+		"type": "account owner",
+		"accounts": [
+			{
+				"name": "XYZ eBay account",
+				"color": "green",
+				"notifications": [
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "07:25",
+						"color": "green"
+					},
+					{
+						"msg": "eBay order job active",
+						"date": "07:25",
+						"color": "blue"
+					},
+					{
+						"msg": "eBay order job failed",
+						"date": "07:25",
+						"color": "orange"
+					},
+					{
+						"msg": "eBay order job paused",
+						"date": "07:25",
+						"color": "gray"
+					}
+				],
+				"inventory": [
+					{
+						"date": "2020/09/03",
+						"listed": 150
+					},
+					{
+						"date": "2020/09/04",
+						"listed": 140
+					},
+					{
+						"date": "2020/09/05",
+						"listed": 100
+					},
+					{
+						"date": "2020/09/06",
+						"listed": 300
+					},
+					{
+						"date": "2020/09/07",
+						"listed": 50
+					},
+					{
+						"date": "2020/09/08",
+						"listed": 123
+					},
+					{
+						"date": "2020/09/09",
+						"listed": 234
+					},
+					{
+						"date": "2020/09/10",
+						"listed": 199
+					},
+					{
+						"date": "2020/09/11",
+						"listed": 20
+					},
+					{
+						"date": "2020/09/12",
+						"listed": 55
+					},
+					{
+						"date": "2020/09/13",
+						"listed": 99
+					}
+				],
+				"listing_stat": {
+					"total": 12956,
+					"active": 3260,
+					"sold": 1149,
+					"unsold": 8547,
+					"scheduled": 0,
+					"timespan": "13.09.2017-20.09.2017"
+				},
+				"soldlast24": [
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					}
+				]
+			},
+			{
+				"name": "Luke Skywalker eBay account",
+				"color": "orange",
+				"notifications": [
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					},
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					}
+				],
+				"inventory": [
+					{
+						"date": "2020/09/03",
+						"listed": 150
+					},
+					{
+						"date": "2020/09/04",
+						"listed": 140
+					},
+					{
+						"date": "2020/09/05",
+						"listed": 100
+					},
+					{
+						"date": "2020/09/06",
+						"listed": 300
+					},
+					{
+						"date": "2020/09/07",
+						"listed": 50
+					},
+					{
+						"date": "2020/09/08",
+						"listed": 123
+					},
+					{
+						"date": "2020/09/09",
+						"listed": 234
+					},
+					{
+						"date": "2020/09/10",
+						"listed": 199
+					},
+					{
+						"date": "2020/09/11",
+						"listed": 20
+					},
+					{
+						"date": "2020/09/12",
+						"listed": 55
+					},
+					{
+						"date": "2020/09/13",
+						"listed": 99
+					}
+				],
+				"listing_stat": {
+					"total": 12956,
+					"active": 3260,
+					"sold": 1149,
+					"unsold": 8547,
+					"scheduled": 0,
+					"timespan": "13.09.2017-20.09.2017"
+				},
+				"soldlast24": [
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					}
+				]
+			},
+			{
+				"name": "Hahn Solo 1978 eBay account",
+				"color": "blue",
+				"notifications": [
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					},
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					},
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					}
+				],
+				"inventory": [
+					{
+						"date": "2020/09/03",
+						"listed": 150
+					},
+					{
+						"date": "2020/09/04",
+						"listed": 140
+					},
+					{
+						"date": "2020/09/05",
+						"listed": 100
+					},
+					{
+						"date": "2020/09/06",
+						"listed": 300
+					},
+					{
+						"date": "2020/09/07",
+						"listed": 50
+					},
+					{
+						"date": "2020/09/08",
+						"listed": 123
+					},
+					{
+						"date": "2020/09/09",
+						"listed": 234
+					},
+					{
+						"date": "2020/09/10",
+						"listed": 199
+					},
+					{
+						"date": "2020/09/11",
+						"listed": 20
+					},
+					{
+						"date": "2020/09/12",
+						"listed": 55
+					},
+					{
+						"date": "2020/09/13",
+						"listed": 99
+					}
+				],
+				"listing_stat": {
+					"total": 12956,
+					"active": 3260,
+					"sold": 1149,
+					"unsold": 8547,
+					"scheduled": 0,
+					"timespan": "13.09.2017-20.09.2017"
+				},
+				"soldlast24": [
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					}
+				]
+			},
+			{
+				"name": "Anakin Skywalker eBay account",
+				"color": "gray",
+				"notifications": [
+					{
+						"msg": "eBay order job finished successfully",
+						"date": "2020/07/25"
+					}
+				],
+				"inventory": [
+					{
+						"date": "2020/09/03",
+						"listed": 150
+					},
+					{
+						"date": "2020/09/04",
+						"listed": 140
+					},
+					{
+						"date": "2020/09/05",
+						"listed": 100
+					},
+					{
+						"date": "2020/09/06",
+						"listed": 300
+					},
+					{
+						"date": "2020/09/07",
+						"listed": 50
+					},
+					{
+						"date": "2020/09/08",
+						"listed": 123
+					},
+					{
+						"date": "2020/09/09",
+						"listed": 234
+					},
+					{
+						"date": "2020/09/10",
+						"listed": 199
+					},
+					{
+						"date": "2020/09/11",
+						"listed": 20
+					},
+					{
+						"date": "2020/09/12",
+						"listed": 55
+					},
+					{
+						"date": "2020/09/13",
+						"listed": 99
+					}
+				],
+				"listing_stat": {
+					"total": 12956,
+					"active": 3260,
+					"sold": 1149,
+					"unsold": 8547,
+					"scheduled": 0,
+					"timespan": "13.09.2017-20.09.2017"
+				},
+				"soldlast24": [
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					}
+				]
+			}
+		],
+		"completion": {
+			"account_data": true,
+			"ebay_account": true,
+			"invite": false,
+			"inventory": false,
+			"list": false
+		},
+		"userperf": [
+			{
+				"name": "János SZABÓ",
+				"items": 29
+			},
+			{
+				"name": "Ferenc TÓTH",
+				"items": 16
+			},
+			{
+				"name": "Ferenc TÓTH",
+				"items": 16
+			},
+			{
+				"name": "Ferenc TÓTH",
+				"items": 16
+			},
+			{
+				"name": "Ferenc TÓTH",
+				"items": 16
+			}
+		]
+	}
+]

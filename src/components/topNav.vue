@@ -28,7 +28,7 @@
                 <div v-if="showAcc" class="user-dropdown">
                   <ul class="list-unstyled">
                     <li class="text-left" v-for="(account, id) in jsondata[userid]['accounts']" v-bind:key="id" @click="changeAcc(id)">
-                      {{ account["name"] }}
+                      <div class="dropdown-username">{{ account["name"] }}</div>
                       <span v-bind:class="'usercolor '+(account['color'])"></span>
                     </li>
                   </ul>
@@ -360,6 +360,13 @@
   & div:last-child {
     margin-left:20px;
   }
+}
+
+.dropdown-username {
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @media (max-width: 992px) {

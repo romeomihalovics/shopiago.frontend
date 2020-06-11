@@ -1,6 +1,8 @@
 <template>
   <div>
     <topNav/>
+    <accountCompletion/>
+    <statistics/>
   </div>
 </template>
 
@@ -10,6 +12,8 @@
 
 <script>
 import topNav from '@/components/topNav.vue'
+import accountCompletion from '@/components/accountCompletion.vue'
+import statistics from '@/components/statistics.vue'
 
 export default {
   data () {
@@ -21,7 +25,9 @@ export default {
     }
   },
   components: {
-    topNav
+    topNav,
+    accountCompletion,
+    statistics
   }
 }
 </script>

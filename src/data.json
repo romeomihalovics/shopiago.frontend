@@ -111,11 +111,13 @@
 				"notifications": [
 					{
 						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
+						"date": "07:25",
+						"color": "green"
 					},
 					{
-						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
+						"msg": "eBay order job paused",
+						"date": "07:25",
+						"color": "gray"
 					}
 				],
 				"inventory": [
@@ -200,16 +202,14 @@
 				"color": "blue",
 				"notifications": [
 					{
-						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
+						"msg": "eBay order job failed",
+						"date": "07:25",
+						"color": "orange"
 					},
 					{
-						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
-					},
-					{
-						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
+						"msg": "eBay order job paused",
+						"date": "07:25",
+						"color": "gray"
 					}
 				],
 				"inventory": [
@@ -295,7 +295,8 @@
 				"notifications": [
 					{
 						"msg": "eBay order job finished successfully",
-						"date": "2020/07/25"
+						"date": "07:25",
+						"color": "green"
 					}
 				],
 				"inventory": [
@@ -377,11 +378,32 @@
 			}
 		],
 		"completion": {
-			"account_data": true,
-			"ebay_account": true,
-			"invite": false,
-			"inventory": false,
-			"list": false
+			"msg": {
+				"completed": "Your account is complete",
+				"ncompleted": "Your account is not yet complete"
+			},
+			"checks": {
+				"account_data": {
+					"bool": true,
+					"msg": "Set up your companies account data"	
+				},
+				"ebay_account": {
+					"bool": true,
+					"msg": "Join an eBay account to your profile"	
+				},
+				"invite": {
+					"bool": false,
+					"msg": "Invite your colleagues"	
+				},
+				"inventory": {
+					"bool": false,
+					"msg": "Create an inventory item"	
+				},
+				"list": {
+					"bool": false,
+					"msg": "List an item on eBay"	
+				}
+			}
 		},
 		"userperf": [
 			{

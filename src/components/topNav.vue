@@ -7,15 +7,18 @@
         <span class="lb"></span>
       </button>
       <div class="collapse navbar-collapse" id="topNav">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav navbar-search mr-auto">
           <li class="nav-item">
             <div class="topNav-search">
               <span class="ti-search"></span>
-              <input type="text" placeholder="Search..">
+              <input type="text" placeholder="Search.." @focus="toggleOverlay" @blur="toggleOverlay">
+              <div class="close-search">
+                <span class="ti-close"></span>
+              </div>
             </div>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav navbar-btns">
           <transition name="quick-transition">
             <li v-if="!hideNotQuick" class="nav-item user-drop" @click="showUserDrop">
               <div>
@@ -48,7 +51,7 @@
                   <div v-if="showNotify" class="notifications-dropdown">
                     <ul class="list-unstyled">
                       <li class="text-left" v-for="(notify, id) in jsondata[userid]['accounts'][accountid]['notifications']" v-bind:key="id">
-                        {{ notify["msg"] }}
+                        <span class="notify-msg">{{ notify["msg"] }}</span>
                         <span v-bind:class="'notify '+(notify['color'])">
                           {{ notify["date"] }}
                         </span>
@@ -109,6 +112,27 @@
     color:$color_text_dark;
     outline: none;
     font-size: 18px;
+  }
+}
+
+.navbar-nav {
+  &.navbar-search {
+    position: relative;
+    width: 100%;
+    background-color: $color_text_light;
+    & li {
+      width: 100%;
+    }
+    &:focus-within {
+      z-index: 999999;
+      & .close-search {
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+  }
+  &.navbar-btns {
+    line-height: 1.9rem;
   }
 }
 
@@ -179,6 +203,34 @@
     vertical-align: middle;
     color:$color_text_lighter;
   }
+  & .close-search {
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    transition: .3s;
+    opacity: 0;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    border:1px solid $color_text_dark;
+    margin: auto;
+    text-align: center;
+    & .ti-close {
+      color:$color_text_dark;
+      font-size: 12px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
 }
 
 .quick-create {
@@ -224,6 +276,7 @@
 }
 
 .user-drop {
+  z-index: 2;
   border-right: 1px solid $color_topnav_border;
   border-left:1px solid $color_topnav_border;
   cursor: pointer;
@@ -246,7 +299,7 @@
   position: absolute;
   width: calc(100% + 2px);
   left: -1px;
-  top: 57px;
+  top: 54px;
   background-color: $color_text_light;
   & li {
     border-top:1px solid $color_topnav_border;
@@ -275,7 +328,7 @@
   position: absolute;
   width: 400px;
   right: -1px;
-  top: 57px;
+  top: 54px;
   background-color: $color_text_light;
   & li {
     border-top:1px solid $color_topnav_border;
@@ -302,7 +355,7 @@
   content:'';
   position: absolute;
   right: 10px;
-  top:15px;
+  top:20px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -363,7 +416,17 @@
 }
 
 .dropdown-username {
-  max-width: 90%;
+  max-width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.notify-msg {
+  display: inline-block;
+  max-width: 80%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -375,17 +438,6 @@
     width: 100%;
     & li {
       border: none;
-      text-align: center !important;
-      & .usercolor {
-        position: static;
-        display: inline-block;
-        margin-left: 10px;
-      }
-      & .notify {
-        position: static;
-        display: inline-block;
-        margin-left: 10px;
-      }
     }
   }
   .quick-link {
@@ -445,6 +497,11 @@ export default {
     changeAcc (id) {
       window.accountid = id
       this.accountid = window.accountid
+      this.$root.$emit('changeAcc')
+    },
+    toggleOverlay () {
+      window.showSearchOverlay = !window.showSearchOverlay
+      this.$root.$emit('toggleOverlay')
     }
   }
 }

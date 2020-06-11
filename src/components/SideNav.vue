@@ -72,7 +72,7 @@
 @import "../scss/_varibles.scss";
 
 .sideNav {
-  z-index:999999;
+  z-index:888888;
   -o-transition: .3s;
   -ms-transition: .3s;
   -moz-transition: .3s;

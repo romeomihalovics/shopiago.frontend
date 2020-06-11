@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="wrapper">
+      <searchOverlay/>
       <side-nav/>
       <div class="content">
         <router-view/>
@@ -26,6 +27,15 @@
   display: flex;
 }
 
+.search-overlay {
+  z-index: 999999;
+  position: absolute;
+  background-color: $color_blue;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+}
+
 .content {
   -o-transition: .3s;
   -ms-transition: .3s;
@@ -47,15 +57,18 @@
 
 <script>
 import SideNav from '@/components/SideNav.vue'
+import searchOverlay from '@/components/searchOverlay.vue'
 import data from '@/data.json'
 
 window.jsondata = data
 window.userid = 0
 window.accountid = 0
+window.showSearchOverlay = false
 
 export default {
   components: {
-    SideNav
+    SideNav,
+    searchOverlay
   }
 }
 </script>

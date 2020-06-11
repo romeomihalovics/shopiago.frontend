@@ -76,10 +76,24 @@
 				],
 				"listing_stat": {
 					"total": 12956,
-					"active": 3260,
-					"sold": 1149,
-					"unsold": 8547,
-					"scheduled": 0,
+					"_comment_for_datacolors": [
+						"active",
+						"sold",
+						"unsold",
+						"scheduled"
+					],
+					"data": [
+						3260,
+						1149,
+						8547,
+ 						0
+					],
+					"colors": [
+						"green",
+						"blue",
+						"gray",
+ 						"orange"
+					],
 					"timespan": "13.09.2017-20.09.2017"
 				},
 				"soldlast24": [
@@ -168,10 +182,24 @@
 				],
 				"listing_stat": {
 					"total": 12956,
-					"active": 3260,
-					"sold": 1149,
-					"unsold": 8547,
-					"scheduled": 0,
+					"_comment_for_datacolors": [
+						"active",
+						"sold",
+						"unsold",
+						"scheduled"
+					],
+					"data": [
+						3260,
+						1149,
+						8547,
+ 						0
+					],
+					"colors": [
+						"green",
+						"blue",
+						"gray",
+ 						"orange"
+					],
 					"timespan": "13.09.2017-20.09.2017"
 				},
 				"soldlast24": [
@@ -260,10 +288,24 @@
 				],
 				"listing_stat": {
 					"total": 12956,
-					"active": 3260,
-					"sold": 1149,
-					"unsold": 8547,
-					"scheduled": 0,
+					"_comment_for_datacolors": [
+						"active",
+						"sold",
+						"unsold",
+						"scheduled"
+					],
+					"data": [
+						3260,
+						1149,
+						8547,
+ 						0
+					],
+					"colors": [
+						"green",
+						"blue",
+						"gray",
+ 						"orange"
+					],
 					"timespan": "13.09.2017-20.09.2017"
 				},
 				"soldlast24": [
@@ -347,10 +389,24 @@
 				],
 				"listing_stat": {
 					"total": 12956,
-					"active": 3260,
-					"sold": 1149,
-					"unsold": 8547,
-					"scheduled": 0,
+					"_comment_for_datacolors": [
+						"active",
+						"sold",
+						"unsold",
+						"scheduled"
+					],
+					"data": [
+						3260,
+						1149,
+						8547,
+ 						0
+					],
+					"colors": [
+						"green",
+						"blue",
+						"gray",
+ 						"orange"
+					],
 					"timespan": "13.09.2017-20.09.2017"
 				},
 				"soldlast24": [

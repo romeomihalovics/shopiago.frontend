@@ -116,6 +116,7 @@
 }
 
 .navbar-nav {
+  z-index:2;
   &.navbar-search {
     position: relative;
     width: 100%;

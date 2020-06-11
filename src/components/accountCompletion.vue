@@ -5,7 +5,7 @@
     </div>
     <div class="section-content text-center">
       <ul class="list-unstyled check-list">
-        <li v-for="(check, id) in jsondata[accountid].completion.checks" v-bind:key="id" class="text-center">
+        <li v-for="(check, id) in jsondata[userid].completion.checks" v-bind:key="id" class="text-center">
           <div v-bind:class="'check-circle '+((check.bool) ? 'complete' : 'ncomplete')">
             <span v-if="check.bool" class="ti-check"></span>
           </div>
@@ -107,10 +107,10 @@ export default {
   },
   computed: {
     getMsg () {
-      for (var check in this.jsondata[this.accountid].completion.checks) {
-        if (!check.bool) return this.jsondata[this.accountid].completion.msg.ncompleted
+      for (var check in this.jsondata[this.userid].completion.checks) {
+        if (!check.bool) return this.jsondata[this.userid].completion.msg.ncompleted
       }
-      return this.jsondata[this.accountid].completion.msg.completed
+      return this.jsondata[this.userid].completion.msg.completed
     }
   }
 }

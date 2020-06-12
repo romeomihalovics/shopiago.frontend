@@ -35,16 +35,26 @@
         <div class="col-md-3 d-flex align-items-center text-center">
             <svg :view-box.camel="'-80 -80 160 160'" class="m-auto">
               <circle cx="0" cy="0" r="70" fill="transparent" id="radius"/>
-              <circle v-for="i in 4" v-bind:key="i" cx="0" cy="0" r="70" stroke-linecap="round" fill="transparent" stroke-width="20" :class="getColor(i-1)" v-bind:data-fill="calcFill(i-1) || 0" class="progress"/>
+              <g></g>
+                <circle v-for="i in 4" v-bind:key="i" cx="0" cy="0" r="70" stroke-linecap="round" fill="transparent" stroke-width="15" :class="getColor(i-1)" v-bind:data-fill="calcFill(i-1) || 0" class="progress"/>
             </svg>
         </div>
         <div class="col-md-9">
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.total }}
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[0] }}
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[1] }}
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[2] }}
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[3] }}
-          {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.timespan }}
+          <div class="data-title big green">
+            {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.total }}
+            <span class="d-block">total listing</span>
+          </div>
+          <div class="row">
+            <div v-for="(data, i) in jsondata[userid].accounts[accountid].listing_stat.data" v-bind:key="i" class="col-6 col-md-3 data-title">
+              {{ data }}
+              <span v-bind:class="'circle '+(getColor(i))"></span>
+              <span class="d-block">{{ getName(i) }}</span>
+              <span class="d-block percentage">{{ getPercentage(i) }}</span>
+            </div>
+            <div class="col-12 text-center data-time-span">
+              {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.timespan }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -159,12 +169,20 @@ export default {
       jQuery(document).ready(function () {
         jQuery('svg').find('.progress').sort(function (a, b) {
           return +b.dataset.fill - +a.dataset.fill
-        }).appendTo('svg')
+        }).appendTo('svg > g')
         var radius = parseInt(jQuery('#radius').attr('r'))
         var perimeter = 2 * 3.14 * radius
-        jQuery('svg').children('.progress').each(function () {
-          var amount = parseFloat(jQuery(this).attr('data-fill'))
-          var fillAmount = perimeter - perimeter * amount / 100
+        jQuery('svg > g').children('.progress').each(function () {
+          var index = jQuery(this, '.progress').index()
+          var amount
+          if (parseInt(index) === 0) {
+            amount = 100
+            jQuery(this).data('render-fill', '100')
+          } else {
+            amount = parseFloat(jQuery(this).prev().data('render-fill') - jQuery(this).prev().attr('data-fill'))
+            jQuery(this).data('render-fill', amount)
+          }
+          var fillAmount = (perimeter - perimeter * amount / 100)
           jQuery(this).attr({
             'stroke-dasharray': perimeter
           })
@@ -190,10 +208,16 @@ export default {
       }
     },
     calcFill (i) {
-      return parseFloat(100 - ((this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[i] / this.jsondata[this.userid].accounts[this.accountid].listing_stat.total) * 100))
+      return parseFloat((this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[i] / this.jsondata[this.userid].accounts[this.accountid].listing_stat.total) * 100)
     },
     getColor (i) {
       return this.jsondata[this.userid].accounts[this.accountid].listing_stat.colors[i]
+    },
+    getName (i) {
+      return this.jsondata[this.userid].accounts[this.accountid].listing_stat._comment_for_datacolors[i]
+    },
+    getPercentage (i) {
+      return parseInt((this.jsondata[this.userid].accounts[this.accountid].listing_stat.data[i] / this.jsondata[this.userid].accounts[this.accountid].listing_stat.total) * 100) + '%'
     }
   }
 }

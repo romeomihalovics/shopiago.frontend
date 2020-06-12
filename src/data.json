@@ -390,10 +390,10 @@
 				"listing_stat": {
 					"total": 12956,
 					"_comment_for_datacolors": [
-						"active",
-						"sold",
-						"unsold",
-						"scheduled"
+						"active listings",
+						"sold items",
+						"unsold items",
+						"scheduled items"
 					],
 					"data": [
 						3260,

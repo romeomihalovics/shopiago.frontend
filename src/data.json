@@ -77,10 +77,10 @@
 				"listing_stat": {
 					"total": 12956,
 					"_comment_for_datacolors": [
-						"active",
-						"sold",
-						"unsold",
-						"scheduled"
+						"active listings",
+						"sold items",
+						"unsold items",
+						"scheduled items"
 					],
 					"data": [
 						3260,
@@ -137,62 +137,62 @@
 				"inventory": [
 					{
 						"date": "2020/09/03",
-						"listed": 150
+						"listed": 400
 					},
 					{
 						"date": "2020/09/04",
-						"listed": 140
-					},
-					{
-						"date": "2020/09/05",
-						"listed": 100
-					},
-					{
-						"date": "2020/09/06",
 						"listed": 300
 					},
 					{
-						"date": "2020/09/07",
-						"listed": 50
+						"date": "2020/09/05",
+						"listed": 156
 					},
 					{
-						"date": "2020/09/08",
-						"listed": 123
-					},
-					{
-						"date": "2020/09/09",
-						"listed": 234
-					},
-					{
-						"date": "2020/09/10",
-						"listed": 199
-					},
-					{
-						"date": "2020/09/11",
+						"date": "2020/09/06",
 						"listed": 20
 					},
 					{
-						"date": "2020/09/12",
+						"date": "2020/09/07",
+						"listed": 10
+					},
+					{
+						"date": "2020/09/08",
+						"listed": 2
+					},
+					{
+						"date": "2020/09/09",
+						"listed": 0
+					},
+					{
+						"date": "2020/09/10",
+						"listed": 0
+					},
+					{
+						"date": "2020/09/11",
 						"listed": 55
 					},
 					{
+						"date": "2020/09/12",
+						"listed": 76
+					},
+					{
 						"date": "2020/09/13",
-						"listed": 99
+						"listed": 100
 					}
 				],
 				"listing_stat": {
-					"total": 12956,
+					"total": 500,
 					"_comment_for_datacolors": [
-						"active",
-						"sold",
-						"unsold",
-						"scheduled"
+						"active listings",
+						"sold items",
+						"unsold items",
+						"scheduled items"
 					],
 					"data": [
-						3260,
-						1149,
-						8547,
- 						0
+						144,
+						400,
+						44,
+ 						12
 					],
 					"colors": [
 						"green",
@@ -243,31 +243,31 @@
 				"inventory": [
 					{
 						"date": "2020/09/03",
-						"listed": 150
+						"listed": 4
 					},
 					{
 						"date": "2020/09/04",
-						"listed": 140
+						"listed": 5
 					},
 					{
 						"date": "2020/09/05",
-						"listed": 100
+						"listed": 6
 					},
 					{
 						"date": "2020/09/06",
-						"listed": 300
+						"listed": 66
 					},
 					{
 						"date": "2020/09/07",
-						"listed": 50
-					},
-					{
-						"date": "2020/09/08",
 						"listed": 123
 					},
 					{
+						"date": "2020/09/08",
+						"listed": 0
+					},
+					{
 						"date": "2020/09/09",
-						"listed": 234
+						"listed": 32
 					},
 					{
 						"date": "2020/09/10",
@@ -275,30 +275,30 @@
 					},
 					{
 						"date": "2020/09/11",
-						"listed": 20
+						"listed": 44
 					},
 					{
 						"date": "2020/09/12",
-						"listed": 55
+						"listed": 776
 					},
 					{
 						"date": "2020/09/13",
-						"listed": 99
+						"listed": 12
 					}
 				],
 				"listing_stat": {
-					"total": 12956,
+					"total": 3000,
 					"_comment_for_datacolors": [
-						"active",
-						"sold",
-						"unsold",
-						"scheduled"
+						"active listings",
+						"sold items",
+						"unsold items",
+						"scheduled items"
 					],
 					"data": [
-						3260,
-						1149,
-						8547,
- 						0
+						100,
+						1000,
+						700,
+ 						1200
 					],
 					"colors": [
 						"green",
@@ -344,35 +344,35 @@
 				"inventory": [
 					{
 						"date": "2020/09/03",
-						"listed": 150
+						"listed": 54
 					},
 					{
 						"date": "2020/09/04",
-						"listed": 140
+						"listed": 77
 					},
 					{
 						"date": "2020/09/05",
-						"listed": 100
+						"listed": 45
 					},
 					{
 						"date": "2020/09/06",
-						"listed": 300
+						"listed": 100
 					},
 					{
 						"date": "2020/09/07",
-						"listed": 50
+						"listed": 156
 					},
 					{
 						"date": "2020/09/08",
-						"listed": 123
+						"listed": 99
 					},
 					{
 						"date": "2020/09/09",
-						"listed": 234
+						"listed": 400
 					},
 					{
 						"date": "2020/09/10",
-						"listed": 199
+						"listed": 20
 					},
 					{
 						"date": "2020/09/11",
@@ -380,15 +380,15 @@
 					},
 					{
 						"date": "2020/09/12",
-						"listed": 55
+						"listed": 30
 					},
 					{
 						"date": "2020/09/13",
-						"listed": 99
+						"listed": 40
 					}
 				],
 				"listing_stat": {
-					"total": 12956,
+					"total": 5000,
 					"_comment_for_datacolors": [
 						"active listings",
 						"sold items",
@@ -396,10 +396,10 @@
 						"scheduled items"
 					],
 					"data": [
-						3260,
-						1149,
-						8547,
- 						0
+						2500,
+						500,
+						100,
+ 						1900
 					],
 					"colors": [
 						"green",

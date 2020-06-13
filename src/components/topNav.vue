@@ -247,7 +247,7 @@
     bottom:0;
     width:30px;
     height: 30px;
-    margin: auto;
+    margin: 10px auto;
   }
   & a, & a:hover, & a:focus {
     color:$color_text_light;
@@ -407,6 +407,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  & div {
+    padding-top:2px;
+  }
   & a, a:hover, a:focus {
     font-size: 14px;
     color:$color_blue;

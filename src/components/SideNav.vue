@@ -20,31 +20,31 @@
             <li>
               <router-link to="/dashboard">
                 <span class="ti-home"></span>
-                <span class="navlink-text d-full-width">Dashboard</span>
+                <span class="navlink-text">Dashboard</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-harddrives"></span>
-                <span class="navlink-text d-full-width">Inventory</span>
+                <span class="navlink-text">Inventory</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-view-list"></span>
-                <span class="navlink-text d-full-width">Listings</span>
+                <span class="navlink-text">Listings</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-camera"></span>
-                <span class="navlink-text d-full-width">Images</span>
+                <span class="navlink-text">Images</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-settings"></span>
-                <span class="navlink-text d-full-width">Settings</span>
+                <span class="navlink-text">Settings</span>
               </router-link>
             </li>
           </ul>
@@ -102,6 +102,45 @@
       text-align: center;
       display: inline-block;
       width: 100%;
+      position: relative;
+      & .navlink-text {
+        font-size: 14px;
+        -o-transition: .3s;
+        -ms-transition: .3s;
+        -moz-transition: .3s;
+        -webkit-transition: .3s;
+        transition: .3s;
+        position: absolute;
+        background-color: $color_navbar_bg;
+        left: 60px;
+        top:-5px;
+        padding:5px 20px;
+        border-radius: 3px;
+        text-transform: none;
+        font-weight: normal;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: left;
+        &:after {
+          content:'';
+          width: 0;
+          height: 0;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-right: 10px solid $color_navbar_bg;
+          position: absolute;
+          left: -9px;
+          top:0;
+          bottom: 0;
+          margin: auto;
+        }
+      }
+      &:hover .navlink-text {
+        visibility:visible;
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     & [class^="ti-"], [class*=" ti-"] {
       position: static;
@@ -235,6 +274,7 @@ export default {
   },
   methods: {
     toggleNav () {
+      this.$root.$emit('toggleSideNav')
       this.navToggled = !this.navToggled
     }
   }

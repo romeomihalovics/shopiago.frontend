@@ -116,6 +116,36 @@
 						"name": "Iphone 6S 32GB Space gray",
 						"id": "JH18276",
 						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
+					},
+					{
+						"name": "Iphone 6S 32GB Space gray",
+						"id": "JH18276",
+						"price": "180€"
 					}
 				]
 			},
@@ -464,22 +494,42 @@
 		"userperf": [
 			{
 				"name": "János SZABÓ",
+				"profile_pic": {
+					"type": "text",
+					"text": "JSZ"
+				},
 				"items": 29
 			},
 			{
 				"name": "Ferenc TÓTH",
+				"profile_pic": {
+					"type": "text",
+					"text": "FT"
+				},
 				"items": 16
 			},
 			{
 				"name": "Ferenc TÓTH",
+				"profile_pic": {
+					"type": "text",
+					"text": "FT"
+				},
 				"items": 16
 			},
 			{
 				"name": "Ferenc TÓTH",
+				"profile_pic": {
+					"type": "text",
+					"text": "FT"
+				},
 				"items": 16
 			},
 			{
 				"name": "Ferenc TÓTH",
+				"profile_pic": {
+					"type": "img",
+					"url": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+				},
 				"items": 16
 			}
 		]

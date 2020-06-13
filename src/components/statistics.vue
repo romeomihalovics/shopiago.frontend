@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div v-bind:class="'col-lg-8 ' + ((sideOpen) ? 'sideOpen' : '')">
+    <div v-bind:class="'col-lg-8 px-4 ' + ((sideOpen) ? 'sideOpen' : '')">
       <div class="section-title text-center text-uppercase">
         Inventory Statistics
       </div>
@@ -61,7 +61,7 @@
               <span class="d-block">{{ getName(i) }}</span>
               <span class="d-block percentage">{{ getPercentage(i) }}</span>
             </div>
-            <div class="col-12 text-center data-time-span mt-4">
+            <div class="col-12 text-center data-time-span mt-3 mb-2">
               {{ this.jsondata[this.userid].accounts[this.accountid].listing_stat.timespan }}
             </div>
           </div>
@@ -271,7 +271,7 @@
   }
 }
 
-circle {
+circle:not(#block) {
   -o-transition: stroke-width .3s;
   -ms-transition: stroke-width .3s;
   -moz-transition: stroke-width .3s;

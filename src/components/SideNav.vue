@@ -20,30 +20,35 @@
             <li>
               <router-link to="/dashboard">
                 <span class="ti-home"></span>
+                <span class="d-full-width">Dashboard</span>
                 <span class="navlink-text">Dashboard</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-harddrives"></span>
+                <span class="d-full-width">Inventory</span>
                 <span class="navlink-text">Inventory</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-view-list"></span>
+                <span class="d-full-width">Listings</span>
                 <span class="navlink-text">Listings</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-camera"></span>
+                <span class="d-full-width">Images</span>
                 <span class="navlink-text">Images</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="ti-settings"></span>
+                <span class="d-full-width">Settings</span>
                 <span class="navlink-text">Settings</span>
               </router-link>
             </li>
@@ -54,12 +59,12 @@
             <li class="list-title">Quick Links</li>
             <li>
               <router-link to="/">
-                <span class="navlink-text">Add New Item</span>
+                <span>Add New Item</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
-                <span class="navlink-text">Create New Listing</span>
+                <span>Create New Listing</span>
               </router-link>
             </li>
           </ul>
@@ -84,6 +89,9 @@
   background-color:$color_navbar_bg;
   height: 100%;
   font-size: 14px;
+  & .navlink-text {
+    display: none;
+  }
   &.narrow {
     width: 50px;
     background-color: $color_narrow_bg;
@@ -104,6 +112,7 @@
       width: 100%;
       position: relative;
       & .navlink-text {
+        display: block;
         font-size: 14px;
         -o-transition: .3s;
         -ms-transition: .3s;

@@ -408,7 +408,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   & div {
-    padding-top:2px;
+    padding-top:3px;
   }
   & a, a:hover, a:focus {
     font-size: 14px;

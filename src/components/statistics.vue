@@ -45,7 +45,8 @@
             <svg :view-box.camel="'-80 -80 160 160'" :key="svgKey">
               <circle cx="0" cy="0" r="70" fill="transparent" id="radius"/>
               <g></g>
-              <circle v-for="(data, i) in jsondata[userid].accounts[accountid].listing_stat.data" v-bind:key="i" cx="0" cy="0" r="70" stroke-linecap="round" fill="transparent" stroke-width="15" :class="getColor(i)" v-bind:data-fill="calcFill(i) || 0" class="progress"/>
+              <circle v-for="(data, i) in jsondata[userid].accounts[accountid].listing_stat.data" v-bind:key="i" cx="0" cy="0" r="70" stroke-linecap="round" fill="transparent" stroke-width="15" v-bind:data-fill="calcFill(i) || 0" v-bind:class="'progress '+getColor(i)+' '+((reversehoverId == i) ? 'hover' : '')" @mouseover="hoverId = i" @mouseleave="hoverId = -1"/>
+              <circle cx="0" cy="0" r="70" fill="transparent" id="block"/>
             </svg>
         </div>
         <div class="col-md-7 px-2 pt-3 text-center-md">
@@ -54,9 +55,9 @@
             <span class="d-block">total listing</span>
           </div>
           <div class="row">
-            <div v-for="(data, i) in jsondata[userid].accounts[accountid].listing_stat.data" v-bind:key="i" class="col-6 col-md-3 data-title mb-4">
+            <div v-for="(data, i) in jsondata[userid].accounts[accountid].listing_stat.data" v-bind:key="i" class="col-6 col-md-3 data-title mb-4" @mouseover="reversehoverId = i" @mouseleave="reversehoverId = -1">
               {{ thousandSeparator(data) }}
-              <span v-bind:class="'circle '+(getColor(i))"></span>
+              <span v-bind:class="'circle '+(getColor(i))+' '+((hoverId == i) ? 'hover' : '')"></span>
               <span class="d-block">{{ getName(i) }}</span>
               <span class="d-block percentage">{{ getPercentage(i) }}</span>
             </div>
@@ -151,7 +152,7 @@
         right: -120px;
         background-color: $color_navbar_bg;
         border-radius: 3px;
-        padding:5px 30px;
+        padding:10px 30px;
         white-space: nowrap;
         line-height: 1;
         z-index: 999999;
@@ -214,6 +215,7 @@
   font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
+  cursor: pointer;
   &.big {
     font-size: 26px;
   }
@@ -228,6 +230,11 @@
       font-size: 20px;
     }
     &.circle {
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      transition: .3s;
       width: 15px;
       height: 15px;
       content: '';
@@ -246,7 +253,13 @@
       &.orange {
         background-color: $color_orange;
       }
+      &.hover {
+        transform: scale(1.5);
+      }
     }
+  }
+  &:hover .circle {
+    transform: scale(1.5);
   }
 }
 
@@ -255,6 +268,21 @@
     width: 100%;
     max-width: 250px;
     margin:0 auto;
+  }
+}
+
+circle {
+  -o-transition: stroke-width .3s;
+  -ms-transition: stroke-width .3s;
+  -moz-transition: stroke-width .3s;
+  -webkit-transition: stroke-width .3s;
+  transition: stroke-width .3s;
+  cursor: pointer;
+  &.hover {
+    stroke-width: 20px;
+  }
+  &:hover {
+    stroke-width: 20px;
   }
 }
 
@@ -310,7 +338,9 @@ export default {
       maxIL: 0,
       sideOpen: false,
       svgKey: 0,
-      lineKey: 0
+      lineKey: 0,
+      hoverId: -1,
+      reversehoverId: -1
     }
   },
   methods: {

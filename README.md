@@ -2,7 +2,8 @@
 
 ![Preview](https://media.giphy.com/media/KBVJN3QWekmpj2i6Gq/giphy.gif)
 
-Sample Frontend Project with Vue
+#### Sample Frontend Project with Vue
+__Not the cleanest code, but I tried to make it ASAP. In live projects i would make a better job keeping my code clean and simple__
 
 ## Project setup
 ```

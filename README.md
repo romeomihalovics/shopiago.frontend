@@ -1,7 +1,8 @@
 # shopiago.frontend
 
-Sample Frontend Project with Vue
 ![Preview](https://media.giphy.com/media/KBVJN3QWekmpj2i6Gq/giphy.gif)
+
+Sample Frontend Project with Vue
 
 ## Project setup
 ```

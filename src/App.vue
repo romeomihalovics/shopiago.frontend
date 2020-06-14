@@ -3,7 +3,7 @@
     <div class="wrapper">
       <searchOverlay/>
       <side-nav/>
-      <div class="content">
+      <div class="content position-relative">
         <router-view/>
       </div>
     </div>
@@ -64,6 +64,7 @@ window.jsondata = data
 window.userid = 0
 window.accountid = 0
 window.showSearchOverlay = false
+window.showSearchResults = false
 
 export default {
   components: {

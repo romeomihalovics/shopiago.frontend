@@ -532,6 +532,87 @@
 				},
 				"items": 16
 			}
-		]
+		],
+		"localSearch": {
+			"inventoryItems": [
+				{
+					"name": "iPhone X",
+					"location": "Mulberry House",
+					"id": "SKU12345"
+				},
+				{
+					"name": "iPhone X",
+					"location": "Mulberry House",
+					"id": "SKU12345"
+				},
+				{
+					"name": "iPhone X",
+					"location": "Mulberry House",
+					"id": "SKU12345"
+				},
+				{
+					"name": "iPhone X",
+					"location": "Mulberry House",
+					"id": "SKU12345"
+				}
+			],
+			"listings": [
+				{
+					"name": "Smart phone accessory",
+					"price": "5.99€",
+					"id": "SKU1234",
+					"color": "green"
+				},
+				{
+					"name": "Smart phone accessory",
+					"price": "5.99€",
+					"id": "SKU1234",
+					"color": "green"
+				},
+				{
+					"name": "Smart phone accessory",
+					"price": "5.99€",
+					"id": "SKU1234",
+					"color": "blue"
+				},
+				{
+					"name": "Smart phone accessory",
+					"price": "5.99€",
+					"id": "SKU1234",
+					"color": "orange"
+				}
+			],
+			"recentSearch": [
+				"iPhone X",
+				"lépegető kutya phas",
+				"iPhone X"
+			]
+		},
+		"globalSearch": {
+			"location": "eBay",
+			"items": [
+				{
+					"img": "https://tr3.cbsistatic.com/hub/i/r/2008/02/28/d516b5bf-c3b9-11e2-bc00-02911874f8c8/resize/500x/2fa0da8c3fcdabbcd7073b1599055d97/1005_MacBook_Air.jpg",
+					"name": "Apple MacBook Air 13\" Core i7 1.7Ghz 8GB 256GB (Mid 2014) A Grade Apple Box",
+					"price": "€395",
+					"keywords": "New item | Live Listing | Buy it now",
+					"location": "eBay UK"
+				},
+				{
+					"img": "https://webimg.secondhandapp.com/w-i-mgl/5dc91eb6aa7553160c35b454",
+					"name": "Apple MacBook Air 13\" Core i7 1.7Ghz 8GB 256GB (Mid 2014) A Grade Apple Box",
+					"price": "€395",
+					"keywords": "New item | Live Listing | Buy it now",
+					"location": "eBay UK"
+				},
+				{
+					"img": "https://www.thessdreview.com/wp-content/uploads/2013/06/Open-Box.jpg",
+					"name": "Apple MacBook Air 13\" Core i7 1.7Ghz 8GB 256GB (Mid 2014) A Grade Apple Box",
+					"price": "€395",
+					"keywords": "New item | Live Listing | Buy it now",
+					"location": "eBay UK"
+				}
+			]
+		}
 	}
 ]

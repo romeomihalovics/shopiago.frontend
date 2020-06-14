@@ -1,6 +1,6 @@
 <template>
   <div class="section section-light row">
-    <div v-bind:class="'col-lg-4 ' + ((sideOpen) ? 'sideOpen' : '')">
+    <div v-bind:class="'col-lg-4 px-0 ' + ((sideOpen) ? 'sideOpen' : '')">
       <div class="section-title text-center text-uppercase">
         Inventory Levels
       </div>

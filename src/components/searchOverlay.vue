@@ -33,7 +33,7 @@ export default {
   name: 'searchOverlay',
   mounted () {
     this.$root.$on('toggleOverlay', () => {
-      this.show = !this.show
+      this.show = window.showSearchOverlay
     })
   },
   data () {

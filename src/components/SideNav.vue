@@ -45,12 +45,49 @@
                 <span class="navlink-text">Images</span>
               </router-link>
             </li>
-            <li>
-              <router-link to="/">
+            <li :class="(settingsSub) ? 'subopen' : ''">
+              <a href="#" @click="showSettingsSubmenu">
                 <span class="ti-settings"></span>
                 <span class="d-full-width">Settings</span>
                 <span class="navlink-text">Settings</span>
-              </router-link>
+              </a>
+              <transition name="submenu-transition">
+                <div class="submenu settings-submenu" v-if="settingsSub">
+                  <ul class="list-unstyled text-uppercase">
+                    <li class="list-title">Settings</li>
+                    <li>
+                      <a href="#">
+                        Company Account
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Profile Settings
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        eBay Accounts
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Team Members
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Plan & Payment
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        Inventory Settings
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </transition>
             </li>
           </ul>
         </div>
@@ -89,76 +126,103 @@
   background-color:$color_navbar_bg;
   height: 100%;
   font-size: 14px;
+  & .submenu {
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    transition: .3s;
+    background-color: $color_subbar_bg;
+    position: absolute;
+    width: 100vw;
+    max-width: 220px;
+    top: 0;
+    left: 370px;
+    padding:50px 20px;
+    height: 100vh;
+    & a {
+      text-align: left !important;
+    }
+  }
   & .navlink-text {
     display: none;
+  }
+  &:not(.narrow) {
+    & .subopen {
+      padding:10px;
+    }
   }
   &.narrow {
     width: 50px;
     background-color: $color_narrow_bg;
-  }
-  &.narrow .d-full-width {
-    display: none;
-  }
-  &.narrow .sideNav-links {
-    padding:0;
-    margin-top:70px;
-    & li {
-      border:none;
-      margin:5px 0;
+    & .submenu {
+      left:50px;
     }
-    & a {
-      text-align: center;
-      display: inline-block;
-      width: 100%;
-      position: relative;
-      & .navlink-text {
-        display: block;
-        font-size: 14px;
-        -o-transition: .3s;
-        -ms-transition: .3s;
-        -moz-transition: .3s;
-        -webkit-transition: .3s;
-        transition: .3s;
-        position: absolute;
-        background-color: $color_navbar_bg;
-        left: 60px;
-        top:-5px;
-        padding:5px 20px;
-        border-radius: 3px;
-        text-transform: none;
-        font-weight: normal;
-        visibility: hidden;
-        opacity: 0;
-        transform: scale(0);
-        transform-origin: left;
-        &:after {
-          content:'';
-          width: 0;
-          height: 0;
-          border-top: 5px solid transparent;
-          border-bottom: 5px solid transparent;
-          border-right: 10px solid $color_navbar_bg;
+    & .d-full-width {
+      display: none;
+    }
+    & .sideNav-links {
+      padding:0;
+      margin-top:70px;
+      & li {
+        border:none;
+        margin:5px 0;
+        padding:10px 0;
+      }
+      & a {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        & .navlink-text {
+          display: block;
+          font-size: 14px;
+          -o-transition: .3s;
+          -ms-transition: .3s;
+          -moz-transition: .3s;
+          -webkit-transition: .3s;
+          transition: .3s;
           position: absolute;
-          left: -9px;
-          top:0;
-          bottom: 0;
-          margin: auto;
+          background-color: $color_navbar_bg;
+          left: 60px;
+          top:-5px;
+          padding:5px 20px;
+          border-radius: 3px;
+          text-transform: none;
+          font-weight: normal;
+          visibility: hidden;
+          opacity: 0;
+          transform: scale(0);
+          transform-origin: left;
+          &:after {
+            content:'';
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 10px solid $color_navbar_bg;
+            position: absolute;
+            left: -9px;
+            top:0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+        &:hover .navlink-text {
+          visibility:visible;
+          opacity: 1;
+          transform: scale(1);
         }
       }
-      &:hover .navlink-text {
-        visibility:visible;
-        opacity: 1;
-        transform: scale(1);
+      & [class^="ti-"], [class*=" ti-"] {
+        position: static;
       }
     }
-    & [class^="ti-"], [class*=" ti-"] {
-      position: static;
+    & .sideNav-btn {
+      right:0;
+      left:0;
+      margin: auto;
     }
-  }
-  &.narrow .sideNav-btn {
-    right:0;
-    left:0;
-    margin: auto;
   }
 }
 
@@ -185,7 +249,14 @@
   & li {
     border-bottom:1px solid $color_border_light;
     margin:10px 0;
-    padding-bottom:5px;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -moz-transition: .3s;
+    -webkit-transition: .3s;
+    transition: .3s;
+    &.subopen {
+      background-color: $color_subbar_bg;
+    }
   }
   & a, a:hover, a:focus {
     text-decoration: none;
@@ -265,9 +336,42 @@
   }
 }
 
+.submenu-transition-enter-active, .submenu-transition-leave-active {
+  transition: .3s;
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: center left;
+}
+
+.submenu-transition-enter, .submenu-transition-leave-to{
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center left;
+}
+
 .narrow + .content {
   margin-left:50px;
   width: calc(100% - 50px);
+}
+
+@media (max-width: 600px) {
+  .sideNav:not(.narrow) {
+    & .submenu {
+      left:50px;
+      max-width: 100%;
+    }
+    & .subopen {
+      padding:0;
+      & [class^="ti-"], [class*=" ti-"] {
+        width: 50%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        left: 15px;
+        background-color: $color_subbar_bg;
+      }
+    }
+  }
 }
 </style>
 
@@ -278,13 +382,17 @@ export default {
     return {
       navToggled: false,
       jsondata: window.jsondata,
-      userid: window.userid
+      userid: window.userid,
+      settingsSub: false
     }
   },
   methods: {
     toggleNav () {
       this.$root.$emit('toggleSideNav')
       this.navToggled = !this.navToggled
+    },
+    showSettingsSubmenu () {
+      this.settingsSub = !this.settingsSub
     }
   }
 }

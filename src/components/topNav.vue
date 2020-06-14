@@ -7,80 +7,94 @@
         <span class="lb"></span>
       </button>
       <div class="collapse navbar-collapse" id="topNav">
-        <ul class="navbar-nav navbar-search mr-auto">
+        <ul class="navbar-nav navbar-search mr-auto" :class="(searchNotEmpty) ? 'not_empty' : ''" >
+          <searchResults/>
           <li class="nav-item">
             <div class="topNav-search">
               <span class="ti-search"></span>
-              <input type="text" placeholder="Search.." @focus="toggleOverlay" @blur="toggleOverlay">
-              <div class="close-search">
+              <input type="text" placeholder="Search.." @focus="showOverlay" @blur="hideOverlay" @input="search($event.target.value)" @keydown.esc="forceHideOverlay" ref="searchInput">
+              <div class="close-search" @click="forceHideOverlay">
                 <span class="ti-close"></span>
               </div>
             </div>
           </li>
         </ul>
-        <ul class="navbar-nav navbar-btns">
-          <transition name="quick-transition">
-            <li v-if="!hideNotQuick" class="nav-item user-drop" @click="showUserDrop">
-              <div>
-                <span class="username text-uppercase">
-                  {{ jsondata[userid]["accounts"][accountid]["name"] }}
-                </span>
-                <span class="ti-angle-down"></span>
-              </div>
-              <transition name="user-dropdown-transition">
-                <div v-if="showAcc" class="user-dropdown">
-                  <ul class="list-unstyled">
-                    <li class="text-left" v-for="(account, id) in jsondata[userid]['accounts']" v-bind:key="id" @click="changeAcc(id)">
-                      <div class="dropdown-username">{{ account["name"] }}</div>
-                      <span v-bind:class="'usercolor '+(account['color'])"></span>
-                    </li>
-                  </ul>
-                </div>
-              </transition>
-            </li>
-          </transition>
-          <transition name="quick-transition" v-on:after-leave="showQuickBtns">
-            <li v-if="!hideNotQuick" class="nav-item" @click="showNotifications">
-              <a href="#">
-                <span class="ti-bell">
-                  <span class="notifications">
-                    {{ jsondata[userid]["accounts"][accountid]["notifications"].length  }}
+        <ul v-bind:class="'navbar-nav navbar-btns '+((showSearchSettings) ? 'searchSettings' : '')+' '+((settings) ? 'enabled' : '')" ref="navbtns">
+          <div v-if="!showSearchSettings">
+            <transition name="quick-transition">
+              <li v-if="!hideNotQuick" class="nav-item user-drop" @click="showUserDrop">
+                <div>
+                  <span class="username text-uppercase">
+                    {{ jsondata[userid]["accounts"][accountid]["name"] }}
                   </span>
-                </span>
-                <transition name="notifications-transition">
-                  <div v-if="showNotify" class="notifications-dropdown">
+                  <span class="ti-angle-down"></span>
+                </div>
+                <transition name="user-dropdown-transition">
+                  <div v-if="showAcc" class="user-dropdown">
                     <ul class="list-unstyled">
-                      <li class="text-left" v-for="(notify, id) in jsondata[userid]['accounts'][accountid]['notifications']" v-bind:key="id">
-                        <span class="notify-msg">{{ notify["msg"] }}</span>
-                        <span v-bind:class="'notify '+(notify['color'])">
-                          {{ notify["date"] }}
-                        </span>
+                      <li class="text-left" v-for="(account, id) in jsondata[userid]['accounts']" v-bind:key="id" @click="changeAcc(id)">
+                        <div class="dropdown-username">{{ account["name"] }}</div>
+                        <span v-bind:class="'usercolor '+(account['color'])"></span>
                       </li>
                     </ul>
                   </div>
                 </transition>
-              </a>
-            </li>
-          </transition>
-          <transition name="quick-transition" v-on:after-leave="showNotQuicks">
-            <li v-if="showQuick" class="nav-item quick-link">
-              <div class="d-inline-block">
-                <a href="#">Add new inventory item</a>
-              </div>
-              <div class="d-inline-block">
-                <a href="#">Create new listing</a>
-              </div>
-            </li>
-          </transition>
-          <li class="nav-item quick-create" @click="hideNotQuicks">
+              </li>
+            </transition>
+          </div>
+          <div v-if="!showSearchSettings">
+            <transition name="quick-transition" v-on:after-leave="showQuickBtns">
+              <li v-if="!hideNotQuick" class="nav-item" @click="showNotifications">
+                <a href="#">
+                  <span class="ti-bell">
+                    <span class="notifications">
+                      {{ jsondata[userid]["accounts"][accountid]["notifications"].length  }}
+                    </span>
+                  </span>
+                  <transition name="notifications-transition">
+                    <div v-if="showNotify" class="notifications-dropdown">
+                      <ul class="list-unstyled">
+                        <li class="text-left" v-for="(notify, id) in jsondata[userid]['accounts'][accountid]['notifications']" v-bind:key="id">
+                          <span class="notify-msg">{{ notify["msg"] }}</span>
+                          <span v-bind:class="'notify '+(notify['color'])">
+                            {{ notify["date"] }}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </transition>
+                </a>
+              </li>
+            </transition>
+          </div>
+          <div v-if="!showSearchSettings">
+            <transition name="quick-transition" v-on:after-leave="showNotQuicks">
+              <li v-if="showQuick" class="nav-item quick-link">
+                <div class="d-inline-block">
+                  <a href="#">Add new inventory item</a>
+                </div>
+                <div class="d-inline-block">
+                  <a href="#">Create new listing</a>
+                </div>
+              </li>
+            </transition>
+          </div>
+          <li v-if="!showSearchSettings" class="nav-item quick-create" @click="hideNotQuicks">
             <a href="#">
               <span class="ti-plus"></span>
             </a>
           </li>
-          <li class="nav-item">
+          <li v-if="!showSearchSettings" class="nav-item">
             <a href="#">
               <span class="ti-shift-right"></span>
             </a>
+          </li>
+          <li v-if="showSearchSettings" class="nav-item">
+            <div class="text-uppercase">
+              Search Settings
+              <span class="ti-panel"></span>
+            </div>
+            <searchSettings/>
           </li>
         </ul>
       </div>
@@ -90,6 +104,10 @@
 
 <style lang="scss">
 @import "../scss/_varibles.scss";
+
+* {
+  outline: none;
+}
 
 .topNav {
   border-bottom: 1px solid $color_topnav_border;
@@ -125,6 +143,13 @@
       width: 100%;
     }
     &:focus-within {
+      z-index: 999999;
+      & .close-search {
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+    &.not_empty {
       z-index: 999999;
       & .close-search {
         cursor: pointer;
@@ -436,6 +461,27 @@
   white-space: nowrap;
 }
 
+.searchSettings {
+  z-index: 999999;
+  & li {
+    line-height: 2.1;
+    z-index: 999999;
+    background-color: $color_text_light;
+    border-left: 1px solid $color_topnav_border;
+    & div {
+      white-space: nowrap;
+      min-width: 400px;
+      text-align: left;
+      position: relative;
+      & span {
+        position: absolute;
+        right: 15px;
+        top:5px;
+      }
+    }
+  }
+}
+
 @media (max-width: 992px) {
   #topNav .user-dropdown, #topNav .notifications-dropdown {
     position: static;
@@ -457,12 +503,39 @@
       margin: auto;
     }
   }
+  .searchSettings {
+    display: none;
+  }
+  .searchSettings.enabled {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchSettings {
+    & li {
+      & div {
+        min-width: 100%;
+      }
+    }
+  }
 }
 </style>
 
 <script>
+import searchResults from '@/components/searchResults.vue'
+import searchSettings from '@/components/searchSettings.vue'
+
 export default {
   name: 'topNav',
+  mounted () {
+    this.$root.$on('searchSettings', () => {
+      this.showSearchSettings = window.showSearchSettings
+    })
+    this.$root.$on('showSettings', () => {
+      this.settings = !this.settings
+    })
+  },
   data () {
     return {
       navToggled: false,
@@ -472,7 +545,10 @@ export default {
       showAcc: false,
       showNotify: false,
       hideNotQuick: false,
-      showQuick: false
+      showQuick: false,
+      searchNotEmpty: false,
+      showSearchSettings: false,
+      settings: false
     }
   },
   methods: {
@@ -503,10 +579,56 @@ export default {
       this.accountid = window.accountid
       this.$root.$emit('changeAcc')
     },
-    toggleOverlay () {
-      window.showSearchOverlay = !window.showSearchOverlay
+    showOverlay () {
+      if (!window.showSearchOverlay) {
+        window.showSearchOverlay = true
+        this.$root.$emit('toggleOverlay')
+      }
+    },
+    hideOverlay () {
+      if (!this.$refs.searchInput.value && window.showSearchOverlay) {
+        window.showSearchOverlay = false
+        window.showSearchResults = false
+        window.showSearchSettings = false
+        this.searchNotEmpty = false
+        this.$root.$emit('toggleOverlay')
+        this.$root.$emit('searchResults')
+        this.$root.$emit('searchSettings')
+      }
+    },
+    forceHideOverlay () {
+      this.$refs.searchInput.value = ''
+      window.showSearchOverlay = false
+      window.showSearchResults = false
+      window.showSearchSettings = false
+      this.searchNotEmpty = false
       this.$root.$emit('toggleOverlay')
+      this.$root.$emit('searchResults')
+      this.$root.$emit('searchSettings')
+      this.$refs.searchInput.blur()
+    },
+    search (text) {
+      if (text) {
+        // request search here ..
+        this.searchNotEmpty = true
+        window.searchDataLocal = this.jsondata[this.userid].localSearch
+        window.searchDataGlobal = this.jsondata[this.userid].globalSearch
+        window.showSearchResults = true
+        this.$root.$emit('searchResults')
+        if (window.searchGlobal) {
+          window.showSearchSettings = true
+          this.$root.$emit('searchSettings')
+        }
+      } else {
+        this.searchNotEmpty = false
+        window.showSearchResults = false
+        this.$root.$emit('searchResults')
+      }
     }
+  },
+  components: {
+    searchResults,
+    searchSettings
   }
 }
 </script>

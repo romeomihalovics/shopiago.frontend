@@ -52,6 +52,9 @@
     background-repeat: no-repeat;
     line-height:3.5;
     font-weight: bold;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   & .info {
     color:$color_green;

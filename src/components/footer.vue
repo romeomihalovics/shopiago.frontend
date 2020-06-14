@@ -84,7 +84,7 @@
     text-align: center;
     padding:15px 0;
     & a {
-      padding-right: 20px;
+      padding-right: 20px !important;
       display: inline-block;
     }
   }
@@ -101,7 +101,7 @@
       text-align: center;
       padding:15px 0;
       & a {
-        padding-right: 20px;
+        padding-right: 20px !important;
         display: inline-block;
       }
     }

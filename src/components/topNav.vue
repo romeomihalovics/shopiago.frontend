@@ -622,7 +622,9 @@ export default {
       } else {
         this.searchNotEmpty = false
         window.showSearchResults = false
+        window.showSearchSettings = false
         this.$root.$emit('searchResults')
+        this.$root.$emit('searchSettings')
       }
     }
   },

@@ -45,10 +45,10 @@
             </div>
           </div>
           <div class="search-header row">
-            <div class="header-left col-md" :class="(sideOpen) ? 'sideOpen' : ''">
+            <div class="header-left col-lg" :class="(sideOpen) ? 'sideOpen' : ''">
               <span>Global search ></span>{{ globalResults.location }}
             </div>
-            <div class="header-right col-md" :class="(sideOpen) ? 'sideOpen' : ''">
+            <div class="header-right col-lg" :class="(sideOpen) ? 'sideOpen' : ''">
               <span class="mr-4">Sort by</span>
               <div class="sort-dropdown" @click="toggleSortDropdown">
                 <div class="current">
@@ -276,12 +276,6 @@
   .searchResults {
     padding:30px 10px 30px 10px;
   }
-  .search-header {
-    & .header-right {
-      text-align: left;
-      margin:10px 0px;
-    }
-  }
 }
 
 @media (max-width: 992px) {
@@ -291,6 +285,12 @@
   .searchResults {
     &.showSettings {
       display: none;
+    }
+  }
+  .search-header {
+    & .header-right {
+      text-align: left;
+      margin:10px 0px;
     }
   }
 }

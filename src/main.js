@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './assets/css/themify-icons.css'
+import 'bootstrap/scss/bootstrap.scss'
+import 'themify-icons-sass/themify-icons/_themify-icons.scss'
 
 Vue.config.productionTip = false
 

@@ -1,9 +1,9 @@
 <template>
-  <div class="section section-light row">
+  <section class="light row">
     <div v-bind:class="'col-lg-4 px-0 ' + ((sideOpen) ? 'sideOpen' : '')">
-      <div class="section-title text-center text-uppercase">
+      <h1 class="text-center text-uppercase">
         Inventory Levels
-      </div>
+      </h1>
       <div class="section-content text-center inventory-levels">
         <div class="il-data row m-auto">
           <div class="col-1 il-vals-wrapper">
@@ -37,9 +37,9 @@
       </div>
     </div>
     <div v-bind:class="'col-lg-8 px-4 ' + ((sideOpen) ? 'sideOpen' : '')">
-      <div class="section-title text-center text-uppercase">
+      <h1 class="text-center text-uppercase">
         Inventory Statistics
-      </div>
+      </h1>
       <div class="section-content text-left row">
         <div class="col-lg-3 d-flex align-items-start text-center doughnut-chart">
             <svg :view-box.camel="'-80 -80 160 160'" :key="svgKey">
@@ -68,25 +68,22 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">
-@import '../scss/_varibles.scss';
-
-.section {
-  &.section-light {
+section {
+  &.light {
     background-color:$color_text_light;
     border-top:1px solid $color_topnav_border;
   }
-}
-
-.section-title {
-  padding:40px 100px 0 100px;
-  margin-bottom:30px;
-  font-weight: bold;
-  font-size: 20px;
-  color:$color_text_darker;
+  h1 {
+    padding:40px 100px 0 100px;
+    margin-bottom:30px;
+    font-weight: bold;
+    font-size: 20px;
+    color:$color_text_darker;
+  }
 }
 
 .inventory-levels {
@@ -98,116 +95,98 @@
   margin-right: auto;
   padding-left:30px;
   position: relative;
-  & .il-data {
+  .il-data {
     width: 100%;
     height: 100%;
-  }
-}
-
-.il-vals-wrapper {
-  padding:0;
-}
-
-.il-vals {
-  padding: 0 !important;
-  text-align: right;
-  position: absolute;
-  bottom:0;
-  left: 0;
-  & li {
-    margin-bottom:30%;
-  }
-}
-
-.line-chart {
-  height: 100%;
-  position: relative;
-  & li {
-    height: 100%;
-    max-width: 9%;
-    display: inline-block;
-    padding:0 5px;
-  }
-  & .line-chart-bg {
-    background-color: $color_body_bg;
-    height: 100%;
-    position: relative;
-    border-radius: 3px;
-    & .line-chart-fill {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background-color: $color_green;
-      border-radius: 3px;
-      & .line-tooltip {
-        font-size: 14px;
-        -o-transition: .3s;
-        -ms-transition: .3s;
-        -moz-transition: .3s;
-        -webkit-transition: .3s;
-        transition: .3s;
+    .il-vals-wrapper {
+      padding:0;
+      .il-vals {
+        padding: 0 !important;
+        text-align: right;
         position: absolute;
-        top:-65px;
-        left:-120px;
-        right: -120px;
-        background-color: $color_navbar_bg;
+        bottom:0;
+        left: 0;
+        li {
+          margin-bottom:30%;
+        }
+      }
+    }
+    .line-chart {
+      height: 100%;
+      position: relative;
+      li {
+        height: 100%;
+        max-width: 9%;
+        display: inline-block;
+        padding:0 5px;
+      }
+      .line-chart-bg {
+        background-color: $color_body_bg;
+        height: 100%;
+        position: relative;
         border-radius: 3px;
-        padding:10px 30px;
-        white-space: nowrap;
-        line-height: 1;
-        z-index: 999999;
-        color:$color_text_light;
-        visibility: hidden;
-        opacity: 0;
-        transform: scale(0);
-        transform-origin: bottom;
-        &:after {
-          content:'';
-          width: 0;
-          height: 0;
-          border-left: 10px solid transparent;
-          border-right: 10px solid transparent;
-          border-top: 15px solid $color_navbar_bg;
+        .line-chart-fill {
           position: absolute;
-          bottom: -14px;
-          left: 0;
-          right: 0;
-          margin: auto;
+          bottom: 0;
+          width: 100%;
+          background-color: $color_green;
+          border-radius: 3px;
+          .line-tooltip {
+            font-size: 14px;
+            -o-transition: .3s;
+            -ms-transition: .3s;
+            -moz-transition: .3s;
+            -webkit-transition: .3s;
+            transition: .3s;
+            position: absolute;
+            top:-65px;
+            left:-120px;
+            right: -120px;
+            background-color: $color_navbar_bg;
+            border-radius: 3px;
+            padding:10px 30px;
+            white-space: nowrap;
+            line-height: 1;
+            z-index: 999999;
+            color:$color_text_light;
+            visibility: hidden;
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: bottom;
+            &:after {
+              content:'';
+              width: 0;
+              height: 0;
+              border-left: 10px solid transparent;
+              border-right: 10px solid transparent;
+              border-top: 15px solid $color_navbar_bg;
+              position: absolute;
+              bottom: -14px;
+              left: 0;
+              right: 0;
+              margin: auto;
+            }
+            span {
+              display: block;
+            }
+          }
         }
-        & span {
-          display: block;
+        .line-chart-date {
+          position: absolute;
+          bottom:-40px;
+          font-size: 14px;
+          span {
+            display: block;
+            line-height: 1.1;
+          }
+        }
+        &:hover .line-tooltip {
+          visibility:visible;
+          opacity: 1;
+          transform: scale(1);
         }
       }
     }
-    & .line-chart-date {
-      position: absolute;
-      bottom:-40px;
-      font-size: 14px;
-      & span {
-        display: block;
-        line-height: 1.1;
-      }
-    }
-    &:hover .line-tooltip {
-      visibility:visible;
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-}
-
-.progress {
-  &.gray {
-    stroke:$color_body_bg;
-  }
-  &.green {
-    stroke:$color_green;
-  }
-  &.blue {
-    stroke:$color_blue;
-  }
-  &.orange {
-    stroke:$color_orange;
   }
 }
 
@@ -222,7 +201,7 @@
   &.green {
     color:$color_green;
   }
-  & span {
+  span {
     font-size: 16px;
     font-weight: normal;
     line-height: 1.3;
@@ -264,25 +243,38 @@
 }
 
 .doughnut-chart {
-  & svg {
+  svg {
     width: 100%;
     max-width: 250px;
     margin:0 auto;
-  }
-}
-
-circle:not(#block) {
-  -o-transition: stroke-width .3s;
-  -ms-transition: stroke-width .3s;
-  -moz-transition: stroke-width .3s;
-  -webkit-transition: stroke-width .3s;
-  transition: stroke-width .3s;
-  cursor: pointer;
-  &.hover {
-    stroke-width: 20px;
-  }
-  &:hover {
-    stroke-width: 20px;
+    .progress {
+      &.gray {
+        stroke:$color_body_bg;
+      }
+      &.green {
+        stroke:$color_green;
+      }
+      &.blue {
+        stroke:$color_blue;
+      }
+      &.orange {
+        stroke:$color_orange;
+      }
+    }
+    circle:not(#block) {
+      -o-transition: stroke-width .3s;
+      -ms-transition: stroke-width .3s;
+      -moz-transition: stroke-width .3s;
+      -webkit-transition: stroke-width .3s;
+      transition: stroke-width .3s;
+      cursor: pointer;
+      &.hover {
+        stroke-width: 20px;
+      }
+      &:hover {
+        stroke-width: 20px;
+      }
+    }
   }
 }
 

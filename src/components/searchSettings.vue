@@ -1,12 +1,12 @@
 <template>
   <div class="search-settings">
-    <div class="row mx-2 py-2">
+    <div class="row mx-2 py-2 settings-item">
       <div class="col-md-3 text-left d-flex align-items-center">Source</div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
         <div class="dropdown d-flex align-items-center" @click="dropdownSource">
           <div class="current">
             <span ref="source" class="position-static">Marketplaces (eBay, Amazon)</span>
-            <span class="ti-angle-down"></span>
+            <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
             <ul class="list-unstyled" v-if="showSource" @click="setSource($event.target)">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="row row-cols-md-2 mx-2 py-2">
+    <div class="row row-cols-md-2 mx-2 py-2 settings-item">
       <div class="col text-left">Completed listings only</div>
       <div class="col text-right">
         <label class="switch">
@@ -33,7 +33,7 @@
         </label>
       </div>
     </div>
-    <div class="row row-cols-md-2 mx-2 py-2">
+    <div class="row row-cols-md-2 mx-2 py-2 settings-item">
       <div class="col text-left">Sold items only</div>
       <div class="col text-right">
         <label class="switch">
@@ -42,13 +42,13 @@
         </label>
       </div>
     </div>
-    <div class="row mx-2 py-2">
+    <div class="row mx-2 py-2 settings-item">
       <div class="col-md-3 text-left d-flex align-items-center">Condition</div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
         <div class="dropdown d-flex align-items-center" @click="dropdownCondition">
           <div class="current">
             <span ref="condition" class="position-static">Please select a condition</span>
-            <span class="ti-angle-down"></span>
+            <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
             <ul class="list-unstyled" v-if="showCondition" @click="setCondition($event.target)">
@@ -66,13 +66,13 @@
         </div>
       </div>
     </div>
-    <div class="row mx-2 py-2">
+    <div class="row mx-2 py-2 settings-item">
       <div class="col-md-3 text-left d-flex align-items-center">Buying format</div>
       <div class="col-md-6 text-right ml-auto">
         <div class="dropdown d-flex align-items-center" @click="dropdownFormat">
           <div class="current">
             <span ref="format" class="position-static">Buy it now</span>
-            <span class="ti-angle-down"></span>
+            <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
             <ul class="list-unstyled" v-if="showFormat" @click="setFormat($event.target)">
@@ -90,13 +90,13 @@
         </div>
       </div>
     </div>
-    <div class="row row-cols-md-2 mx-2 py-2">
+    <div class="row row-cols-md-2 mx-2 py-2 settings-item">
       <div class="col-md-3 text-left">EAN</div>
       <div class="col-md-6 text-right ml-auto">
         <input class="settings-input" placeholder="Enter EAN to search for">
       </div>
     </div>
-    <div class="row row-cols-md-2 mx-2 py-2">
+    <div class="row row-cols-md-2 mx-2 py-2 settings-item">
       <div class="col-md-3 text-left">ISBN</div>
       <div class="col-md-6 text-right ml-auto">
         <input class="settings-input" placeholder="Enter ISBN to search for">
@@ -109,11 +109,9 @@
 </template>
 
 <style lang="scss">
-@import '../scss/_varibles.scss';
-
 .search-settings {
   width: calc(100% + 2px);
-  height: 100vh;
+  min-height: 100vh;
   background-color:$color_text_light;
   padding: 0;
   margin: 0;
@@ -124,19 +122,19 @@
   border-left: 1px solid $color_topnav_border;
   border-top: 1px solid $color_topnav_border;
   border-bottom: 1px solid $color_topnav_border;
-  & div {
+  div {
     min-width: unset !important;
   }
-  & .row {
+  .settings-item {
     border-bottom:1px solid $color_topnav_border;
   }
-  & .dropdown {
+  .dropdown {
     width: 100%;
     cursor: pointer;
     display: inline-block;
     position: relative;
     color:$color_text_dark;
-    & div {
+    div {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -145,12 +143,12 @@
       background-color: $color_text_light;
       border-radius: 3px;
       padding-right: 20px;
-      & span:not(.by) {
-        top:8px;
-        right: 0;
+      span:not(.by) {
+        top:8px !important;
+        right: 0 !important;
       }
     }
-    & ul {
+    ul {
       z-index: 3;
       position: absolute;
       background-color: $color_text_light;
@@ -159,7 +157,7 @@
       right: 0;
       top:42px;
       width: 100%;
-      & li {
+      li {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -167,13 +165,48 @@
       }
     }
   }
-  & .settings-input {
+  .settings-input {
     border: none;
     background:transparent;
     width: 100%;
     margin-right: 10px;
     color:$color_text_dark;
     outline: none;
+  }
+  .searchBtn {
+    border:none;
+    padding:5px 40px;
+    background-color: $color_green;
+    color:$color_text_light;
+    border-radius: 3px;
+  }
+
+  .switch {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    height: 5px;
+    width: 30px;
+    background: $color_grayish_blue;
+    border-radius: 3px;
+    margin-bottom: 2px;
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+    div {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      background: $color_dark_gray;
+      transition: .3s;
+      position: absolute;
+      bottom:5px;
+    }
+    input:checked + div {
+      transform: translate3d(100%, 0, 0);
+      background-color: $color_blue;
+    }
   }
 }
 
@@ -188,42 +221,6 @@
   opacity: 0;
   transform: scaleY(0);
   transform-origin: top center;
-}
-
-.searchBtn {
-  border:none;
-  padding:5px 40px;
-  background-color: $color_green;
-  color:$color_text_light;
-  border-radius: 3px;
-}
-
-.switch {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 15px;
-  height: 5px;
-  width: 30px;
-  background: $color_grayish_blue;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  & input {
-    position: absolute;
-    opacity: 0;
-  }
-  & div {
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    background: $color_dark_gray;
-    transition: .3s;
-    position: absolute;
-    bottom:5px;
-  }
-  & input:checked + div {
-    transform: translate3d(100%, 0, 0);
-    background-color: $color_blue;
-  }
 }
 </style>
 

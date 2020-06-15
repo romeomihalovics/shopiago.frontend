@@ -9,10 +9,6 @@
   </div>
 </template>
 
-<style lang="scss">
-@import "../scss/_varibles.scss";
-</style>
-
 <script>
 import topNav from '@/components/topNav.vue'
 import accountCompletion from '@/components/accountCompletion.vue'

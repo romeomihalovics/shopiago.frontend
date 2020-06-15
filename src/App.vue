@@ -11,8 +11,6 @@
 </template>
 
 <style lang="scss">
-@import "scss/_varibles.scss";
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -45,6 +43,11 @@
   margin-left:50px;
   width: calc(100% - 50px);
   color:$color_text_dark;
+}
+
+.narrow + .content {
+  margin-left:50px;
+  width: calc(100% - 50px);
 }
 
 @media (min-width: 700px) {

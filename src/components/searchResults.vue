@@ -38,10 +38,10 @@
         <div v-if="global" :key="globalKey">
           <div class="backtolocal row">
             <div class="col-8" @click="showLocal">
-              <span class="ti-arrow-left my-2"></span> show local results
+              <span class="icon-arrow-left my-2"></span> show local results
             </div>
             <div class="col-4 showsettings text-right" @click="showSettings">
-              settings <span class="ti-settings"></span>
+              settings <span class="icon-settings"></span>
             </div>
           </div>
           <div class="search-header row">
@@ -53,7 +53,7 @@
               <div class="sort-dropdown" @click="toggleSortDropdown">
                 <div class="current">
                   <span class="by" ref="sortby">Price ASC</span>
-                  <span class="ti-angle-down"></span>
+                  <span class="icon-angle-down"></span>
                 </div>
                 <transition name="sort-transition">
                   <ul class="list-unstyled" v-if="sortDropdown" @click="setSorting($event.target)">
@@ -104,8 +104,6 @@
 </template>
 
 <style lang="scss">
-@import '../scss/_varibles.scss';
-
 .searchResults {
   position: absolute;
   background-color: $color_text_light;
@@ -120,14 +118,21 @@
   &.global {
     padding:15px;
     min-height: 100vh;
+    .backtolocal {
+      cursor: pointer;
+      line-height: 2;
+      .showsettings {
+        display: none;
+      }
+    }
   }
-  & .searchTitle {
+  .searchTitle {
     color:$color_blue;
     font-weight: bold;
     margin-bottom:10px;
     position: relative;
     width: 100%;
-    & .searchMore {
+    .searchMore {
       text-transform: none;
       font-weight: normal;
       font-size: 12px;
@@ -136,10 +141,10 @@
       cursor: pointer;
     }
   }
-  & .searchWrapper {
+  .searchWrapper {
     width: 100%;
     margin-bottom:50px;
-    & div {
+    div {
       padding:5px 0;
       padding-right: 20px;
       white-space: nowrap;
@@ -149,7 +154,7 @@
       &:not(:first-child) {
         border-top:1px solid $color_topnav_border;
       }
-      & .circle {
+      .circle {
         position: absolute;
         right: 10px;
         top: 10px;
@@ -169,6 +174,83 @@
       }
     }
   }
+  .search-header {
+    margin:0;
+    padding-bottom:5px;
+    border-bottom:1px solid $color_topnav_border;
+    color:$color_text_darkest;
+    .header-left {
+      display: flex;
+      align-items: center;
+      span {
+        color:$color_text_dark;
+        margin-right: 5px;
+      }
+    }
+    .header-right {
+      text-align: right;
+      .sort-dropdown {
+        z-index: 2;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        color:$color_text_light;
+        div {
+          display: inline-block;
+          background-color: $color_blue;
+          border-radius: 3px;
+          padding:10px 15px;
+          span:not(.by) {
+            margin-left:20px;
+          }
+        }
+        ul {
+          position: absolute;
+          text-align: left;
+          background-color: $color_blue;
+          white-space:nowrap;
+          right: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .search-items {
+    color:$color_text_darkest;
+    > div:not(:last-child) {
+      border-bottom:1px solid $color_topnav_border;
+    }
+    .item-picture {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      content: '';
+      width: 100%;
+      min-height: 125px;
+      border:1px solid $color_topnav_border;
+    }
+    .item-price {
+      font-weight: bold;
+    }
+    .item-actions {
+      margin:20px 0;
+      button {
+        padding:10px 20px;
+        border:none;
+        color:$color_text_light;
+        border-radius: 3px;
+        &.green {
+          background-color:$color_green;
+        }
+        &.blue {
+          background-color:$color_blue;
+        }
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
 }
 
 .results-transition-enter-active, .results-transition-leave-active, .sort-transition-enter-active, .sort-transition-leave-active  {
@@ -184,94 +266,6 @@
   transform-origin: top center;
 }
 
-.backtolocal {
-  cursor: pointer;
-  line-height: 2;
-}
-
-.search-header {
-  margin:0;
-  padding-bottom:5px;
-  border-bottom:1px solid $color_topnav_border;
-  color:$color_text_darkest;
-  & .header-left {
-    display: flex;
-    align-items: center;
-    & span {
-      color:$color_text_dark;
-      margin-right: 5px;
-    }
-  }
-  & .header-right {
-    text-align: right;
-    & .sort-dropdown {
-      z-index: 2;
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-      color:$color_text_light;
-      & div {
-        display: inline-block;
-        background-color: $color_blue;
-        border-radius: 3px;
-        padding:10px 15px;
-        & span:not(.by) {
-          margin-left:20px;
-        }
-      }
-      & ul {
-        position: absolute;
-        text-align: left;
-        background-color: $color_blue;
-        white-space:nowrap;
-        right: 0;
-        width: 100%;
-      }
-    }
-  }
-}
-
-.search-items {
-  color:$color_text_darkest;
-  & > div:not(:last-child) {
-    border-bottom:1px solid $color_topnav_border;
-  }
-  & .item-picture {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    content: '';
-    width: 100%;
-    min-height: 125px;
-    border:1px solid $color_topnav_border;
-  }
-  & .item-price {
-    font-weight: bold;
-  }
-  & .item-actions {
-    margin:20px 0;
-    & button {
-      padding:10px 20px;
-      border:none;
-      color:$color_text_light;
-      border-radius: 3px;
-      &.green {
-        background-color:$color_green;
-      }
-      &.blue {
-        background-color:$color_blue;
-      }
-      &:first-child {
-        margin-right: 20px;
-      }
-    }
-  }
-}
-
-.showsettings {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .searchResults {
     padding:30px 10px 30px 10px;
@@ -279,29 +273,33 @@
 }
 
 @media (max-width: 992px) {
-  .showsettings {
-    display: block;
-  }
   .searchResults {
+    &.global {
+      .backtolocal {
+        .showsettings {
+          display: block;
+        }
+      }
+    }
     &.showSettings {
       display: none;
     }
-  }
-  .search-header {
-    & .header-right {
-      text-align: left;
-      margin:10px 0px;
+    .search-header {
+      .header-right {
+        text-align: left;
+        margin:10px 0px;
+      }
     }
   }
 }
 
 @media (max-width: 1200px) {
   .searchResults {
-    & .sideOpen {
+    .sideOpen {
       flex: none;
       max-width: 100%;
       text-align: left;
-      & .searchMore {
+      .searchMore {
         display:block;
         position: static;
       }

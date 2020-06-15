@@ -7,8 +7,6 @@
 </template>
 
 <style lang="scss">
-@import "../scss/_varibles.scss";
-
 .searchOverlay {
   position: fixed;
   background-color: $color_blue;

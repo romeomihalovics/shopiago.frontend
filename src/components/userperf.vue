@@ -1,8 +1,8 @@
 <template>
-  <div class="section section-light text-center pb-4">
-    <div class="section-title text-center text-uppercase">
+  <section class="light text-center pb-4">
+    <h1 class="text-center text-uppercase">
       User Performance
-    </div>
+    </h1>
     <div v-for="(data, id) in jsondata[userid].userperf" v-bind:key="id" class="userperf mx-5 my-2">
       <div v-if="data.profile_pic.type == 'text'" class="profile_pic mb-3 text">
         {{ data.profile_pic.text }}
@@ -16,30 +16,27 @@
         {{ data.items }} items listed
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">
-@import '../scss/_varibles.scss';
-
-.section {
-  &.section-light {
+section {
+  &.light {
     background-color:$color_text_light;
     border-top:1px solid $color_topnav_border;
   }
-}
-
-.section-title {
-  padding:40px 40px 25px 40px;
-  margin-bottom:0;
-  font-weight: bold;
-  font-size: 20px;
-  color:$color_text_darker;
+  h1 {
+    padding:40px 40px 25px 40px;
+    margin-bottom:0;
+    font-weight: bold;
+    font-size: 20px;
+    color:$color_text_darker;
+  }
 }
 
 .userperf {
   display: inline-block;
-  & .profile_pic {
+  .profile_pic {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -56,7 +53,7 @@
     -ms-user-select: none;
     user-select: none;
   }
-  & .info {
+  .info {
     color:$color_green;
   }
 }

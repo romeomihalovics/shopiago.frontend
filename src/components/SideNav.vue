@@ -19,35 +19,35 @@
           <ul class="list-unstyled text-uppercase">
             <li>
               <router-link to="/dashboard">
-                <span class="ti-home"></span>
+                <span class="icon-home"></span>
                 <span class="d-full-width">Dashboard</span>
                 <span class="navlink-text">Dashboard</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
-                <span class="ti-harddrives"></span>
+                <span class="icon-harddrives"></span>
                 <span class="d-full-width">Inventory</span>
                 <span class="navlink-text">Inventory</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
-                <span class="ti-view-list"></span>
+                <span class="icon-view-list"></span>
                 <span class="d-full-width">Listings</span>
                 <span class="navlink-text">Listings</span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
-                <span class="ti-camera"></span>
+                <span class="icon-camera"></span>
                 <span class="d-full-width">Images</span>
                 <span class="navlink-text">Images</span>
               </router-link>
             </li>
             <li :class="(settingsSub) ? 'subopen' : ''">
               <a href="#" @click="showSettingsSubmenu">
-                <span class="ti-settings"></span>
+                <span class="icon-settings"></span>
                 <span class="d-full-width">Settings</span>
                 <span class="navlink-text">Settings</span>
               </a>
@@ -111,8 +111,6 @@
 </template>
 
 <style lang="scss">
-@import "../scss/_varibles.scss";
-
 .sideNav {
   z-index:888888;
   -o-transition: .3s;
@@ -126,7 +124,103 @@
   background-color:$color_navbar_bg;
   height: 100%;
   font-size: 14px;
-  & .submenu {
+  .sideNav-btn {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    right: 20px;
+    top:20px;
+    .lt, .lm, .lb {
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      transition: .3s;
+      display: block;
+      position: absolute;
+      width: 25px;
+      height: 2px;
+      background: $color_text_light;
+      content: '';
+    }
+    .lt {
+      top: 0px;
+    }
+    .lm {
+      top: 10px;
+    }
+    .lb {
+      top: 20px;
+    }
+    &.active {
+      .lt {
+        top: 10px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+      .lm {
+        width: 0;
+        opacity: 0;
+      }
+      .lb {
+        top: 10px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .sideNav-header {
+    padding: 10px 95px 20px 60px;
+    .sideNav-user {
+      margin-top:20px;
+      .username {
+        font-weight: bold;
+      }
+      .userrole {
+        font-size: 12px;
+      }
+    }
+  }
+  .sideNav-links {
+    padding: 10px 95px 20px 60px;
+    li {
+      border-bottom:1px solid $color_border_light;
+      margin:10px 0;
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      -moz-transition: .3s;
+      -webkit-transition: .3s;
+      transition: .3s;
+      &.subopen {
+        background-color: $color_subbar_bg;
+      }
+    }
+    a, a:hover, a:focus {
+      text-decoration: none;
+      color:$color_text_light;
+      outline: none;
+      font-weight: bold;
+    }
+    [class^="icon-"], [class*=" icon-"] {
+      position: absolute;
+      left:20px;
+      font-size: 20px;
+    }
+  }
+  &:not(.narrow) {
+    & .subopen {
+      padding:10px;
+    }
+  }
+  .submenu {
     -o-transition: .3s;
     -ms-transition: .3s;
     -moz-transition: .3s;
@@ -140,41 +234,36 @@
     left: 370px;
     padding:50px 20px;
     height: 100vh;
-    & a {
+    a {
       text-align: left !important;
     }
   }
-  & .navlink-text {
+  .navlink-text {
     display: none;
-  }
-  &:not(.narrow) {
-    & .subopen {
-      padding:10px;
-    }
   }
   &.narrow {
     width: 50px;
     background-color: $color_narrow_bg;
-    & .submenu {
+    .submenu {
       left:50px;
     }
-    & .d-full-width {
+    .d-full-width {
       display: none;
     }
-    & .sideNav-links {
+    .sideNav-links {
       padding:0;
       margin-top:70px;
-      & li {
+      li {
         border:none;
         margin:5px 0;
         padding:10px 0;
       }
-      & a {
+      a {
         text-align: center;
         display: inline-block;
         width: 100%;
         position: relative;
-        & .navlink-text {
+        .navlink-text {
           display: block;
           font-size: 14px;
           -o-transition: .3s;
@@ -214,125 +303,32 @@
           transform: scale(1);
         }
       }
-      & [class^="ti-"], [class*=" ti-"] {
+      [class^="icon-"], [class*=" icon-"] {
         position: static;
       }
     }
-    & .sideNav-btn {
+    .sideNav-btn {
       right:0;
       left:0;
       margin: auto;
     }
   }
-}
-
-.sideNav-header, .sideNav-links, .sideNav-footer {
-  padding: 10px 95px 20px 60px;
-}
-
-.sideNav-user {
-  margin-top:20px;
-  & .username {
-    font-weight: bold;
-  }
-  & .userrole {
-    font-size: 12px;
-  }
-}
-
-.list-title {
-  color:$color_text_darker;
-  font-size: 12px;
-}
-
-.sideNav-links {
-  & li {
-    border-bottom:1px solid $color_border_light;
-    margin:10px 0;
-    -o-transition: .3s;
-    -ms-transition: .3s;
-    -moz-transition: .3s;
-    -webkit-transition: .3s;
-    transition: .3s;
-    &.subopen {
-      background-color: $color_subbar_bg;
+  .sideNav-footer {
+    padding: 10px 95px 20px 60px;
+    li {
+      margin:10px 0;
+      padding-bottom:5px;
+    }
+    a, a:hover, a:focus {
+      text-decoration: none;
+      color:$color_text_light;
+      outline: none;
+      font-weight: bold;
     }
   }
-  & a, a:hover, a:focus {
-    text-decoration: none;
-    color:$color_text_light;
-    outline: none;
-    font-weight: bold;
-  }
-  & [class^="ti-"], [class*=" ti-"] {
-    position: absolute;
-    left:20px;
-    font-size: 20px;
-  }
-}
-
-.sideNav-footer {
-  & li {
-    margin:10px 0;
-    padding-bottom:5px;
-  }
-  & a, a:hover, a:focus {
-    text-decoration: none;
-    color:$color_text_light;
-    outline: none;
-    font-weight: bold;
-  }
-}
-
-.sideNav-btn {
-  display: block;
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  padding: 6px;
-  text-align: center;
-  cursor: pointer;
-  right: 20px;
-  top:20px;
-  & .lt, .lm, .lb {
-    -o-transition: .3s;
-    -ms-transition: .3s;
-    -moz-transition: .3s;
-    -webkit-transition: .3s;
-    transition: .3s;
-    display: block;
-    position: absolute;
-    width: 25px;
-    height: 2px;
-    background: $color_text_light;
-    content: '';
-  }
-  & .lt {
-    top: 0px;
-  }
-  & .lm {
-    top: 10px;
-  }
-  & .lb {
-    top: 20px;
-  }
-  &.active .lt {
-    top: 10px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  &.active .lm {
-    width: 0;
-    opacity: 0;
-  }
-  &.active .lb {
-    top: 10px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+  .list-title {
+    color:$color_text_darker;
+    font-size: 12px;
   }
 }
 
@@ -349,20 +345,15 @@
   transform-origin: center left;
 }
 
-.narrow + .content {
-  margin-left:50px;
-  width: calc(100% - 50px);
-}
-
 @media (max-width: 600px) {
   .sideNav:not(.narrow) {
-    & .submenu {
+    .submenu {
       left:50px;
       max-width: 100%;
     }
-    & .subopen {
+    .subopen {
       padding:0;
-      & [class^="ti-"], [class*=" ti-"] {
+      [class^="icon-"], [class*=" icon-"] {
         width: 50%;
         padding-top: 5px;
         padding-bottom: 5px;

@@ -1,4 +1,5 @@
 # shopiago.frontend
+[![CodeFactor](https://www.codefactor.io/repository/github/romeomihalovics/shopiago.frontend/badge)](https://www.codefactor.io/repository/github/romeomihalovics/shopiago.frontend)
 
 ![Preview](https://media.giphy.com/media/KBVJN3QWekmpj2i6Gq/giphy.gif)
 

@@ -1,17 +1,20 @@
-Style:
+Style: DONE
 
 1. VUE Global SCSS Variables -- DONE
 2. remove & add ampersand in scss where unnecessary or necessary -- DONE
 3. Remove unnecessary classes, replace them with already existing selectors e.g.: remove .section and use the section tag instead etc -- DONE
 4. Customize custom classes rather than bootstrap classes -- DONE
 5. Make every styling file to scss -- DONE
-6. Make sidenav into flexbox
+6. Make sidenav into flexbox -- Wont make it into flexbox, cuz then it cant be fixed, thus the buttons cant be seen after scrolling down, and also when opened the content cant slide behind it, or show on top of it when searching on a small screen etc.
 
-Anti vue:
+Vue:
 
 - Get rid of jquery
+- make :class parameters more effective
+
+  !!! IMPORTANT !!!	
 - Use computed instead stuff like this: this.$refs.sortby.innerText = target.innerText
 - Vuex store instead window variables
-- Unsubscribe from events
-- make :class parameters more effective 
+- Unsubscribe from events 
 - make the formatting unified (" => ', function(){} => ()=>{} etc )
+  !!! IMPORTANT !!!

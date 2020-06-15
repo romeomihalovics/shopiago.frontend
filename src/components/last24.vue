@@ -71,10 +71,11 @@ section {
 }
 
 @media (max-width: 495px) {
-  .section {
-    .section-title {
+  section {
+    h1 {
       .section-title-right {
         position: static;
+        display: block;
       }
     }
   }
@@ -101,6 +102,7 @@ section {
   .section-title-right {
     &.sideOpen {
       position: static;
+      display: block;
     }
   }
 }

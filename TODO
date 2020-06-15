@@ -1,1 +1,18 @@
-Transitions here and there, code clean up, bug fixes
+Style:
+
+1. VUE Global SCSS Variables
+2. remove & add ampersand in scss where unnecessary or necessary
+3. Remove unnecessary classes, replace them with already existing selectors e.g.: remove .section and use the section tag instead etc
+4. Customize custom classes rather than bootstrap classes
+5. Make every styling file to scss
+6. Make sidenav into flexbox
+
+Anti vue:
+
+- Get rid of jquery, and use bootstrap's vue version
+https://bootstrap-vue.org<https://bootstrap-vue.org/>
+- Use computed instead stuff like this: this.$refs.sortby.innerText = target.innerText
+- Vuex store instead window variables
+- Unsubscribe from events
+- make :class parameters more effective 
+- make the formatting unified (" => ', function(){} => ()=>{} etc )

@@ -18,14 +18,6 @@ import userperf from '@/components/userperf.vue'
 import pagefooter from '@/components/footer.vue'
 
 export default {
-  data () {
-    return {
-      navToggled: false,
-      jsondata: window.jsondata,
-      userid: window.userid,
-      accountid: window.accountid
-    }
-  },
   components: {
     topNav,
     accountCompletion,

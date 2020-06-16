@@ -1,7 +1,10 @@
 <template>
-  <div v-bind:class="(navToggled) ? '' : 'narrow'">
-    <nav v-bind:class="'sideNav ' + ((navToggled) ? '' : 'narrow')">
-        <span v-bind:class="'sideNav-btn '+((navToggled) ? 'active' : '')" @click="toggleNav">
+  <div :class="(navToggled) ? '' : 'narrow'">
+    <nav :class="['sideNav', ((navToggled) ? '' : 'narrow')]">
+        <span
+          :class="['sideNav-btn', ((navToggled) ? 'active' : '')]"
+          @click="toggleNav"
+        >
           <span class="lt"></span>
           <span class="lm"></span>
           <span class="lb"></span>
@@ -11,8 +14,12 @@
             <img src="./../assets/img/logo.png">
           </div>
           <div class="sideNav-user d-full-width">
-            <span class="username d-block">{{ jsondata[userid]["name"] }}</span>
-            <span class="userrole d-block">{{ jsondata[userid]["type"]  }}</span>
+            <span class="username d-block">
+              {{ jsondata[userid]["name"] }}
+            </span>
+            <span class="userrole d-block">
+              {{ jsondata[userid]["type"]  }}
+            </span>
           </div>
         </div>
         <div class="sideNav-links">
@@ -20,41 +27,63 @@
             <li>
               <router-link to="/dashboard">
                 <span class="icon-home"></span>
-                <span class="d-full-width">Dashboard</span>
-                <span class="navlink-text">Dashboard</span>
+                <span class="d-full-width">
+                  Dashboard
+                </span>
+                <span class="navlink-text">
+                  Dashboard
+                </span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="icon-harddrives"></span>
-                <span class="d-full-width">Inventory</span>
-                <span class="navlink-text">Inventory</span>
+                <span class="d-full-width">
+                  Inventory
+                </span>
+                <span class="navlink-text">
+                  Inventory
+                </span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="icon-view-list"></span>
-                <span class="d-full-width">Listings</span>
-                <span class="navlink-text">Listings</span>
+                <span class="d-full-width">
+                  Listings
+                </span>
+                <span class="navlink-text">
+                  Listings
+                </span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
                 <span class="icon-camera"></span>
-                <span class="d-full-width">Images</span>
-                <span class="navlink-text">Images</span>
+                <span class="d-full-width">
+                  Images
+                </span>
+                <span class="navlink-text">
+                  Images
+                </span>
               </router-link>
             </li>
             <li :class="(settingsSub) ? 'subopen' : ''">
               <a href="#" @click="showSettingsSubmenu">
                 <span class="icon-settings"></span>
-                <span class="d-full-width">Settings</span>
-                <span class="navlink-text">Settings</span>
+                <span class="d-full-width">
+                  Settings
+                </span>
+                <span class="navlink-text">
+                  Settings
+                </span>
               </a>
               <transition name="submenu-transition">
                 <div class="submenu settings-submenu" v-if="settingsSub">
                   <ul class="list-unstyled text-uppercase">
-                    <li class="list-title">Settings</li>
+                    <li class="list-title">
+                      Settings
+                    </li>
                     <li>
                       <a href="#">
                         Company Account
@@ -93,15 +122,21 @@
         </div>
         <div class="sideNav-footer d-full-width">
           <ul class="list-unstyled text-uppercase">
-            <li class="list-title">Quick Links</li>
+            <li class="list-title">
+              Quick Links
+            </li>
             <li>
               <router-link to="/">
-                <span>Add New Item</span>
+                <span>
+                  Add New Item
+                </span>
               </router-link>
             </li>
             <li>
               <router-link to="/">
-                <span>Create New Listing</span>
+                <span>
+                  Create New Listing
+                </span>
               </router-link>
             </li>
           </ul>
@@ -234,8 +269,11 @@
     left: 370px;
     padding:50px 20px;
     height: 100vh;
-    a {
-      text-align: left !important;
+    li {
+      border-bottom:1px solid $color_border_light !important;
+      a {
+        text-align: left !important;
+      }
     }
   }
   .navlink-text {
@@ -371,19 +409,26 @@ export default {
   name: 'SideNav',
   data () {
     return {
-      navToggled: false,
-      jsondata: window.jsondata,
-      userid: window.userid,
       settingsSub: false
     }
   },
   methods: {
     toggleNav () {
-      this.$root.$emit('toggleSideNav')
-      this.navToggled = !this.navToggled
+      this.$store.commit('setSideOpen', !this.navToggled)
     },
     showSettingsSubmenu () {
       this.settingsSub = !this.settingsSub
+    }
+  },
+  computed: {
+    jsondata () {
+      return this.$store.state.jsondata
+    },
+    userid () {
+      return this.$store.state.userid
+    },
+    navToggled () {
+      return this.$store.state.sideOpen
     }
   }
 }

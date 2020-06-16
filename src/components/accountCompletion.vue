@@ -1,12 +1,16 @@
 <template>
   <section class="dark">
     <h1 class="text-center text-uppercase">
-    {{ getMsg }}
+      {{ getMsg }}
     </h1>
     <div class="section-content text-center">
       <ul class="list-unstyled check-list">
-        <li v-for="(check, id) in jsondata[userid].completion.checks" v-bind:key="id" class="text-center">
-          <div v-bind:class="'check-circle '+((check.bool) ? 'complete' : 'ncomplete')">
+        <li
+          v-for="(check, id) in jsondata[userid].completion.checks"
+          :key="id"
+          class="text-center"
+        >
+          <div :class="['check-circle', (check.bool) ? 'complete' : 'ncomplete']">
             <span v-if="check.bool" class="icon-check"></span>
           </div>
           <div class="check-msg">
@@ -90,14 +94,16 @@ section {
 <script>
 export default {
   name: 'accountCompletion',
-  data () {
-    return {
-      jsondata: window.jsondata,
-      userid: window.userid,
-      accountid: window.accountid
-    }
-  },
   computed: {
+    jsondata () {
+      return this.$store.state.jsondata
+    },
+    userid () {
+      return this.$store.state.userid
+    },
+    accountid () {
+      return this.$store.state.accountid
+    },
     getMsg () {
       for (var check in this.jsondata[this.userid].completion.checks) {
         if (!check.bool) return this.jsondata[this.userid].completion.msg.ncompleted

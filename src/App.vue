@@ -63,13 +63,14 @@ import SideNav from '@/components/SideNav.vue'
 import searchOverlay from '@/components/searchOverlay.vue'
 import data from '@/data.json'
 
-window.jsondata = data
-window.userid = 0
-window.accountid = 0
-window.showSearchOverlay = false
-window.showSearchResults = false
-
 export default {
+  beforeMount () {
+    this.$store.commit('setJsonData', data)
+    this.$store.commit('setUserId', 0)
+    this.$store.commit('setAccountId', 0)
+    this.$store.commit('setShowSearchOverlay', false)
+    this.$store.commit('setShowSearchResults', false)
+  },
   components: {
     SideNav,
     searchOverlay

@@ -29,14 +29,9 @@
 <script>
 export default {
   name: 'searchOverlay',
-  mounted () {
-    this.$root.$on('toggleOverlay', () => {
-      this.show = window.showSearchOverlay
-    })
-  },
-  data () {
-    return {
-      show: window.showSearchOverlay
+  computed: {
+    show () {
+      return this.$store.state.showSearchOverlay
     }
   }
 }

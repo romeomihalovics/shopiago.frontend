@@ -1,22 +1,26 @@
 <template>
   <div class="search-settings">
     <div class="row mx-2 py-2 settings-item">
-      <div class="col-md-3 text-left d-flex align-items-center">Source</div>
+      <div class="col-md-3 text-left d-flex align-items-center">
+        Source
+      </div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
         <div class="dropdown d-flex align-items-center" @click="dropdownSource">
           <div class="current">
-            <span ref="source" class="position-static">Marketplaces (eBay, Amazon)</span>
+            <span v-text="source" class="position-static">
+              Marketplaces (eBay, Amazon)
+            </span>
             <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
             <ul class="list-unstyled" v-if="showSource" @click="setSource($event.target)">
-              <li>
+              <li data-source="Please select a source">
                 Please select a source
               </li>
-              <li>
+              <li data-source="Marketplaces (eBay, Amazon)">
                 Marketplaces (eBay, Amazon)
               </li>
-              <li>
+              <li data-source="Something else">
                 Something else
               </li>
             </ul>
@@ -25,7 +29,9 @@
       </div>
     </div>
     <div class="row row-cols-md-2 mx-2 py-2 settings-item">
-      <div class="col text-left">Completed listings only</div>
+      <div class="col text-left">
+        Completed listings only
+      </div>
       <div class="col text-right">
         <label class="switch">
           <input type="checkbox" checked>
@@ -34,7 +40,9 @@
       </div>
     </div>
     <div class="row row-cols-md-2 mx-2 py-2 settings-item">
-      <div class="col text-left">Sold items only</div>
+      <div class="col text-left">
+        Sold items only
+      </div>
       <div class="col text-right">
         <label class="switch">
           <input type="checkbox">
@@ -43,22 +51,30 @@
       </div>
     </div>
     <div class="row mx-2 py-2 settings-item">
-      <div class="col-md-3 text-left d-flex align-items-center">Condition</div>
+      <div class="col-md-3 text-left d-flex align-items-center">
+        Condition
+      </div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
         <div class="dropdown d-flex align-items-center" @click="dropdownCondition">
           <div class="current">
-            <span ref="condition" class="position-static">Please select a condition</span>
+            <span v-text="condition" class="position-static">
+              Please select a condition
+            </span>
             <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
-            <ul class="list-unstyled" v-if="showCondition" @click="setCondition($event.target)">
-              <li>
+            <ul
+              class="list-unstyled"
+              v-if="showCondition"
+              @click="setCondition($event.target)"
+            >
+              <li data-condition="Please select a condition">
                 Please select a condition
               </li>
-              <li>
+              <li data-condition="New">
                 New
               </li>
-              <li>
+              <li data-condition="Used">
                 Used
               </li>
             </ul>
@@ -67,22 +83,30 @@
       </div>
     </div>
     <div class="row mx-2 py-2 settings-item">
-      <div class="col-md-3 text-left d-flex align-items-center">Buying format</div>
+      <div class="col-md-3 text-left d-flex align-items-center">
+        Buying format
+      </div>
       <div class="col-md-6 text-right ml-auto">
         <div class="dropdown d-flex align-items-center" @click="dropdownFormat">
           <div class="current">
-            <span ref="format" class="position-static">Buy it now</span>
+            <span v-text="format" class="position-static">
+              Buy it now
+            </span>
             <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
-            <ul class="list-unstyled" v-if="showFormat" @click="setFormat($event.target)">
-              <li>
+            <ul
+              class="list-unstyled"
+              v-if="showFormat"
+              @click="setFormat($event.target)"
+            >
+              <li data-format="Please select a buying format">
                 Please select a buying format
               </li>
-              <li>
+              <li data-format="Buy it now">
                 Buy it now
               </li>
-              <li>
+              <li data-format="Pre Order">
                 Pre Order
               </li>
             </ul>
@@ -91,19 +115,25 @@
       </div>
     </div>
     <div class="row row-cols-md-2 mx-2 py-2 settings-item">
-      <div class="col-md-3 text-left">EAN</div>
+      <div class="col-md-3 text-left">
+        EAN
+      </div>
       <div class="col-md-6 text-right ml-auto">
         <input class="settings-input" placeholder="Enter EAN to search for">
       </div>
     </div>
     <div class="row row-cols-md-2 mx-2 py-2 settings-item">
-      <div class="col-md-3 text-left">ISBN</div>
+      <div class="col-md-3 text-left">
+        ISBN
+      </div>
       <div class="col-md-6 text-right ml-auto">
         <input class="settings-input" placeholder="Enter ISBN to search for">
       </div>
     </div>
     <div class="text-center my-3">
-      <button class="searchBtn" @click="showSettings">Search</button>
+      <button class="searchBtn" @click="showSettings">
+        Search
+      </button>
     </div>
   </div>
 </template>
@@ -231,7 +261,10 @@ export default {
     return {
       showSource: false,
       showCondition: false,
-      showFormat: false
+      showFormat: false,
+      source: 'Marketplaces (eBay, Amazon)',
+      condition: 'Please select a condition',
+      format: 'Buy it now'
     }
   },
   methods: {
@@ -245,13 +278,13 @@ export default {
       this.showFormat = !this.showFormat
     },
     setSource (target) {
-      this.$refs.source.innerText = target.innerText
+      this.source = target.getAttribute('data-source')
     },
     setCondition (target) {
-      this.$refs.condition.innerText = target.innerText
+      this.condition = target.getAttribute('data-condition')
     },
     setFormat (target) {
-      this.$refs.format.innerText = target.innerText
+      this.format = target.getAttribute('data-format')
     },
     showSettings () {
       this.settings = !this.settings

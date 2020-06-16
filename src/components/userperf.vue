@@ -3,7 +3,11 @@
     <h1 class="text-center text-uppercase">
       User Performance
     </h1>
-    <div v-for="(data, id) in jsondata[userid].userperf" v-bind:key="id" class="userperf mx-5 my-2">
+    <div
+      v-for="(data, id) in jsondata[userid].userperf"
+      :key="id"
+      class="userperf mx-5 my-2"
+    >
       <div v-if="data.profile_pic.type == 'text'" class="profile_pic mb-3 text">
         {{ data.profile_pic.text }}
       </div>
@@ -62,10 +66,12 @@ section {
 <script>
 export default {
   name: 'userperf',
-  data () {
-    return {
-      jsondata: window.jsondata,
-      userid: window.userid
+  computed: {
+    jsondata () {
+      return this.$store.state.jsondata
+    },
+    userid () {
+      return this.$store.state.userid
     }
   }
 }

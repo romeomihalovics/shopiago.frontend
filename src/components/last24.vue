@@ -2,10 +2,16 @@
   <section class="light">
     <h1 class="text-left text-uppercase">
       Sold Items in Last 24 Hrs
-      <span class="section-title-right" :class="(sideOpen) ? 'sideOpen' : ''">see full list</span>
+      <span :class="['section-title-right', (sideOpen) ? 'sideOpen' : '']">
+        see full list
+      </span>
     </h1>
     <div class="last24-items row row-cols-md-2 mx-2 pb-5">
-      <div v-for="(data, id) in jsondata[userid].accounts[accountid].soldlast24" v-bind:key="id" class="col-md last24-item" :class="(sideOpen) ? 'sideOpen' : ''">
+      <div
+        v-for="(data, id) in jsondata[userid].accounts[accountid].soldlast24"
+        :key="id"
+        :class="['col-md', 'last24-item', (sideOpen) ? 'sideOpen' : '']"
+      >
         <div class="row py-2 mx-2 item-row">
           <div class="col col-6 item-col">
             {{ data.name }}
@@ -111,23 +117,23 @@ section {
 <script>
 export default {
   name: 'last24',
-  mounted () {
-    this.$root.$on('changeAcc', () => {
-      this.jsondata = window.jsondata
-      this.userid = window.userid
-      this.accountid = window.accountid
-    })
-    this.$root.$on('toggleSideNav', () => {
-      this.sideOpen = !this.sideOpen
-    })
-  },
   data () {
     return {
-      jsondata: window.jsondata,
-      userid: window.userid,
-      accountid: window.accountid,
-      showLimit: 10, // *2
-      sideOpen: false
+      showLimit: 10 // *2
+    }
+  },
+  computed: {
+    jsondata () {
+      return this.$store.state.jsondata
+    },
+    userid () {
+      return this.$store.state.userid
+    },
+    accountid () {
+      return this.$store.state.accountid
+    },
+    sideOpen () {
+      return this.$store.state.sideOpen
     }
   }
 }

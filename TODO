@@ -9,12 +9,12 @@ Style: DONE
 
 Vue:
 
-- Get rid of jquery
-- make :class parameters more effective
+- Get rid of jquery, get bootstrap-vue -- DONE
+- make a better use out of :class -- DONE
 
   !!! IMPORTANT !!!	
-- Use computed instead stuff like this: this.$refs.sortby.innerText = target.innerText
-- Vuex store instead window variables
-- Unsubscribe from events 
+- Use computed or v-text instead stuff like this: this.$refs.sortby.innerText = target.innerText -- DONE
+- Vuex store instead window variables -- DONE
+- Unsubscribe from events -- DONE
 - make the formatting unified (" => ', function(){} => ()=>{} etc )
   !!! IMPORTANT !!!

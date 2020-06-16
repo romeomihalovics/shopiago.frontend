@@ -1,28 +1,43 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light topNav">
-      <button v-bind:class="'navbar-toggler ml-auto '+((navToggled) ? 'active' : '')" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation" @click="toggleNav">
+    <b-navbar toggleable="lg" type="light" class="topNav">
+      <b-navbar-toggle class="navbar-toggler ml-auto" target="topNav">
         <span class="lt"></span>
         <span class="lm"></span>
         <span class="lb"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="topNav">
-        <ul class="navbar-nav navbar-search mr-auto" :class="(searchNotEmpty) ? 'not_empty' : ''" >
+      </b-navbar-toggle>
+      <b-collapse id="topNav" is-nav>
+        <ul :class="['navbar-nav', 'navbar-search', 'mr-auto', (searchNotEmpty) ? 'not_empty' : '']" >
           <searchResults/>
           <li class="nav-item">
             <div class="topNav-search">
               <span class="icon-search"></span>
-              <input type="text" placeholder="Search.." @focus="showOverlay" @blur="hideOverlay" @input="search($event.target.value)" @keydown.esc="forceHideOverlay" ref="searchInput">
+              <input
+                type="text"
+                placeholder="Search.."
+                @focus="showOverlay"
+                @blur="hideOverlay"
+                @input="search($event.target.value)"
+                @keydown.esc="forceHideOverlay"
+                ref="searchInput"
+              >
               <div class="close-search" @click="forceHideOverlay">
                 <span class="icon-close"></span>
               </div>
             </div>
           </li>
         </ul>
-        <ul v-bind:class="'navbar-nav navbar-btns '+((showSearchSettings) ? 'searchSettings' : '')+' '+((settings) ? 'enabled' : '')" ref="navbtns">
+        <ul
+          :class="['navbar-nav', 'navbar-btns', ((showSearchSettings) ? 'searchSettings' : ''),((settings) ? 'enabled' : '')]"
+          ref="navbtns"
+        >
           <div v-if="!showSearchSettings">
             <transition name="quick-transition">
-              <li v-if="!hideNotQuick" class="nav-item user-drop" @click="showUserDrop">
+              <li
+                v-if="!hideNotQuick"
+                class="nav-item user-drop"
+                @click="showUserDrop"
+              >
                 <div>
                   <span class="username text-uppercase">
                     {{ jsondata[userid]["accounts"][accountid]["name"] }}
@@ -32,9 +47,16 @@
                 <transition name="user-dropdown-transition">
                   <div v-if="showAcc" class="user-dropdown">
                     <ul class="list-unstyled">
-                      <li class="text-left" v-for="(account, id) in jsondata[userid]['accounts']" v-bind:key="id" @click="changeAcc(id)">
-                        <div class="dropdown-username">{{ account["name"] }}</div>
-                        <span v-bind:class="'usercolor '+(account['color'])"></span>
+                      <li
+                        class="text-left"
+                        v-for="(account, id) in jsondata[userid]['accounts']"
+                        :key="id"
+                        @click="changeAcc(id)"
+                      >
+                        <div class="dropdown-username">
+                          {{ account["name"] }}
+                        </div>
+                        <span :class="['usercolor', account['color']]"></span>
                       </li>
                     </ul>
                   </div>
@@ -54,9 +76,15 @@
                   <transition name="notifications-transition">
                     <div v-if="showNotify" class="notifications-dropdown">
                       <ul class="list-unstyled">
-                        <li class="text-left" v-for="(notify, id) in jsondata[userid]['accounts'][accountid]['notifications']" v-bind:key="id">
-                          <span class="notify-msg">{{ notify["msg"] }}</span>
-                          <span v-bind:class="'notify '+(notify['color'])">
+                        <li
+                          class="text-left"
+                          v-for="(notify, id) in jsondata[userid]['accounts'][accountid]['notifications']"
+                          :key="id"
+                        >
+                          <span class="notify-msg">
+                            {{ notify["msg"] }}
+                          </span>
+                          <span :class="['notify', notify['color']]">
                             {{ notify["date"] }}
                           </span>
                         </li>
@@ -71,10 +99,14 @@
             <transition name="quick-transition" v-on:after-leave="showNotQuicks">
               <li v-if="showQuick" class="nav-item quick-link">
                 <div class="d-inline-block">
-                  <a href="#">Add new inventory item</a>
+                  <a href="#">
+                    Add new inventory item
+                  </a>
                 </div>
                 <div class="d-inline-block">
-                  <a href="#">Create new listing</a>
+                  <a href="#">
+                    Create new listing
+                  </a>
                 </div>
               </li>
             </transition>
@@ -97,8 +129,8 @@
             <searchSettings/>
           </li>
         </ul>
-      </div>
-    </nav>
+      </b-collapse>
+    </b-navbar>
   </div>
 </template>
 
@@ -408,7 +440,7 @@
     .lb {
       top: 30px;
     }
-    &.active {
+    &.not-collapsed {
       .lt {
         top: 20px;
         -webkit-transform: rotate(-45deg);
@@ -527,33 +559,23 @@ import searchSettings from '@/components/searchSettings.vue'
 
 export default {
   name: 'topNav',
+  beforeDestroy () {
+    this.$root.$off('showSettings', this.showSettingsListener)
+  },
   mounted () {
-    this.$root.$on('searchSettings', () => {
-      this.showSearchSettings = window.showSearchSettings
-    })
-    this.$root.$on('showSettings', () => {
-      this.settings = !this.settings
-    })
+    this.$root.$on('showSettings', this.showSettingsListener)
   },
   data () {
     return {
-      navToggled: false,
-      jsondata: window.jsondata,
-      userid: window.userid,
-      accountid: window.accountid,
       showAcc: false,
       showNotify: false,
       hideNotQuick: false,
       showQuick: false,
       searchNotEmpty: false,
-      showSearchSettings: false,
       settings: false
     }
   },
   methods: {
-    toggleNav () {
-      this.navToggled = !this.navToggled
-    },
     showUserDrop () {
       this.showAcc = !this.showAcc
     },
@@ -574,57 +596,75 @@ export default {
       this.hideNotQuick = !this.hideNotQuick
     },
     changeAcc (id) {
-      window.accountid = id
-      this.accountid = window.accountid
+      this.$store.commit('setAccountId', id)
       this.$root.$emit('changeAcc')
     },
     showOverlay () {
-      if (!window.showSearchOverlay) {
-        window.showSearchOverlay = true
-        this.$root.$emit('toggleOverlay')
+      if (!this.showSearchOverlay) {
+        this.$store.commit('setShowSearchOverlay', true)
       }
     },
     hideOverlay () {
-      if (!this.$refs.searchInput.value && window.showSearchOverlay) {
-        window.showSearchOverlay = false
-        window.showSearchResults = false
-        window.showSearchSettings = false
+      if (!this.$refs.searchInput.value && this.showSearchOverlay) {
+        this.$store.commit('setShowSearchOverlay', false)
+        this.$store.commit('setShowSearchResults', false)
+        this.$store.commit('setShowSearchSettings', false)
         this.searchNotEmpty = false
-        this.$root.$emit('toggleOverlay')
         this.$root.$emit('searchResults')
-        this.$root.$emit('searchSettings')
       }
     },
     forceHideOverlay () {
       this.$refs.searchInput.value = ''
-      window.showSearchOverlay = false
-      window.showSearchResults = false
-      window.showSearchSettings = false
+      this.$store.commit('setShowSearchOverlay', false)
+      this.$store.commit('setShowSearchResults', false)
+      this.$store.commit('setShowSearchSettings', false)
       this.searchNotEmpty = false
-      this.$root.$emit('toggleOverlay')
       this.$root.$emit('searchResults')
-      this.$root.$emit('searchSettings')
       this.$refs.searchInput.blur()
     },
     search (text) {
       if (text) {
         // request search here ..
         this.searchNotEmpty = true
-        window.searchDataLocal = this.jsondata[this.userid].localSearch
-        window.searchDataGlobal = this.jsondata[this.userid].globalSearch
-        window.showSearchResults = true
+        this.$store.commit('setSearchDataLocal', this.jsondata[this.userid].localSearch)
+        this.$store.commit('setSearchDataGlobal', this.jsondata[this.userid].globalSearch)
+        this.$store.commit('setShowSearchResults', true)
         this.$root.$emit('searchResults')
-        if (window.searchGlobal) {
-          window.showSearchSettings = true
-          this.$root.$emit('searchSettings')
+        if (this.searchGlobal) {
+          this.$store.commit('setShowSearchSettings', true)
         }
       } else {
         this.searchNotEmpty = false
-        window.showSearchResults = false
-        window.showSearchSettings = false
+        this.$store.commit('setShowSearchResults', false)
+        this.$store.commit('setShowSearchSettings', false)
         this.$root.$emit('searchResults')
-        this.$root.$emit('searchSettings')
       }
+    },
+    showSettingsListener () {
+      this.settings = !this.settings
+    }
+  },
+  computed: {
+    jsondata () {
+      return this.$store.state.jsondata
+    },
+    userid () {
+      return this.$store.state.userid
+    },
+    accountid () {
+      return this.$store.state.accountid
+    },
+    showSearchSettings () {
+      return this.$store.state.showSearchSettings
+    },
+    showSearchOverlay () {
+      return this.$store.state.showSearchOverlay
+    },
+    searchLocal () {
+      return this.$store.state.searchLocal
+    },
+    searchGlobal () {
+      return this.$store.state.searchGlobal
     }
   },
   components: {

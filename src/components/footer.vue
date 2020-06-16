@@ -1,10 +1,18 @@
 <template>
-  <footer class="light" :class="((sideOpen) ? 'sideOpen' : '')">
+  <footer :class="['light', (sideOpen) ? 'sideOpen' : '']">
     <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/">Privacy Policy</a>
-      <a href="/">Terms of Service</a>
-      <a href="/">Help Center</a>
+      <a href="/">
+        Home
+      </a>
+      <a href="/">
+        Privacy Policy
+      </a>
+      <a href="/">
+        Terms of Service
+      </a>
+      <a href="/">
+        Help Center
+      </a>
     </div>
     <div class="footer-social">
       <a href="/">
@@ -107,14 +115,9 @@ footer {
 <script>
 export default {
   name: 'pagefooter',
-  mounted () {
-    this.$root.$on('toggleSideNav', () => {
-      this.sideOpen = !this.sideOpen
-    })
-  },
-  data () {
-    return {
-      sideOpen: false
+  computed: {
+    sideOpen () {
+      return this.$store.state.sideOpen
     }
   }
 }

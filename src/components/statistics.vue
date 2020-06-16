@@ -355,8 +355,6 @@ export default {
   },
   mounted () {
     this.$root.$on('changeAcc', this.changeAccListener)
-    console.log(this.sortDonut())
-    console.log(this.sortedDonutIndeces())
   },
   data () {
     return {

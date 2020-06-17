@@ -5,7 +5,8 @@ Style: DONE
 3. Remove unnecessary classes, replace them with already existing selectors e.g.: remove .section and use the section tag instead etc -- DONE
 4. Customize custom classes rather than bootstrap classes -- DONE
 5. Make every styling file to scss -- DONE
-6. Make sidenav into flexbox -- Wont make it into flexbox, cuz then it cant be fixed, thus the buttons cant be seen after scrolling down, and also when opened the content cant slide behind it, or show on top of it when searching on a small screen etc.
+6. Make sidenav into flexbox -- Had to do it this way -- DONE
+7. Dropdown focusout -> hide -- DONE
 
 Vue:
 
@@ -16,5 +17,5 @@ Vue:
 - Use computed or v-text instead stuff like this: this.$refs.sortby.innerText = target.innerText -- DONE
 - Vuex store instead window variables -- DONE
 - Unsubscribe from events -- DONE
-- make the formatting unified (" => ', function(){} => ()=>{} etc )
+- make the formatting unified (" => ', function(){} => ()=>{} etc ) -- DONE
   !!! IMPORTANT !!!

@@ -36,7 +36,7 @@
               <li
                 v-if="!hideNotQuick"
                 class="nav-item user-drop"
-                @click="showUserDrop"
+                @click="(!showAcc) ? showUserDrop() : ''"
               >
                 <div>
                   <span class="username text-uppercase">
@@ -66,7 +66,11 @@
           </div>
           <div v-if="!showSearchSettings">
             <transition name="quick-transition" v-on:after-leave="showQuickBtns">
-              <li v-if="!hideNotQuick" class="nav-item" @click="showNotifications">
+              <li
+                v-if="!hideNotQuick"
+                class="nav-item"
+                @click="(!showNotify) ? showNotifications() : ''"
+              >
                 <a href="#">
                   <span class="icon-bell">
                     <span class="notifications">
@@ -578,9 +582,11 @@ export default {
   methods: {
     showUserDrop () {
       this.showAcc = !this.showAcc
+      this.dropDownWatcher(this.showAcc, this.showUserDrop)
     },
     showNotifications () {
       this.showNotify = !this.showNotify
+      this.dropDownWatcher(this.showNotify, this.showNotifications)
     },
     hideNotQuicks () {
       if (!this.hideNotQuick) {
@@ -642,6 +648,15 @@ export default {
     },
     showSettingsListener () {
       this.settings = !this.settings
+    },
+    dropDownWatcher (condition, action) {
+      setTimeout(() => {
+        if (condition) {
+          document.addEventListener('click', action)
+        } else {
+          document.removeEventListener('click', action)
+        }
+      }, 300)
     }
   },
   computed: {

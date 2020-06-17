@@ -1,5 +1,5 @@
 <template>
-  <div :class="(navToggled) ? '' : 'narrow'">
+  <div :class="['d-flex', (navToggled) ? '' : 'narrow']">
     <nav :class="['sideNav', ((navToggled) ? '' : 'narrow')]">
         <span
           :class="['sideNav-btn', ((navToggled) ? 'active' : '')]"
@@ -153,9 +153,10 @@
   -moz-transition: .3s;
   -webkit-transition: .3s;
   transition: .3s;
-  position: fixed;
-  max-width: 370px;
-  width: 100%;
+  position: relative;
+  max-width: 100vw;
+  min-width: 50px;
+  width: 370px;
   background-color:$color_navbar_bg;
   height: 100%;
   font-size: 14px;
@@ -268,7 +269,7 @@
     top: 0;
     left: 370px;
     padding:50px 20px;
-    height: 100vh;
+    height: 100%;
     li {
       border-bottom:1px solid $color_border_light !important;
       a {

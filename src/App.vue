@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="wrapper">
+    <div class="wrapper d-flex flex-row">
       <searchOverlay/>
       <side-nav/>
       <div class="content position-relative">
@@ -21,10 +21,6 @@
   min-height: 100vh;
 }
 
-.wrapper {
-  display: flex;
-}
-
 .search-overlay {
   z-index: 999999;
   position: absolute;
@@ -40,21 +36,8 @@
   -moz-transition: .3s;
   -webkit-transition: .3s;
   transition: .3s;
-  margin-left:50px;
-  width: calc(100% - 50px);
+  flex:1;
   color:$color_text_dark;
-}
-
-.narrow + .content {
-  margin-left:50px;
-  width: calc(100% - 50px);
-}
-
-@media (min-width: 700px) {
-  .content {
-    margin-left:370px;
-    width: calc(100% - 370px);
-  }
 }
 </style>
 

@@ -5,7 +5,10 @@
         Source
       </div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
-        <div class="dropdown d-flex align-items-center" @click="dropdownSource">
+        <div
+          class="dropdown d-flex align-items-center"
+          @click="(!showSource) ? dropdownSource() : ''"
+        >
           <div class="current">
             <span v-text="source" class="position-static">
               Marketplaces (eBay, Amazon)
@@ -13,7 +16,11 @@
             <span class="icon-angle-down"></span>
           </div>
           <transition name="dropdown-transition">
-            <ul class="list-unstyled" v-if="showSource" @click="setSource($event.target)">
+            <ul
+              class="list-unstyled"
+              v-if="showSource"
+              @click="setSource($event.target)"
+            >
               <li data-source="Please select a source">
                 Please select a source
               </li>
@@ -55,7 +62,10 @@
         Condition
       </div>
       <div class="col-md-6 text-right ml-auto d-flex align-items-center">
-        <div class="dropdown d-flex align-items-center" @click="dropdownCondition">
+        <div
+          class="dropdown d-flex align-items-center"
+          @click="(!showCondition) ? dropdownCondition() : ''"
+        >
           <div class="current">
             <span v-text="condition" class="position-static">
               Please select a condition
@@ -87,7 +97,10 @@
         Buying format
       </div>
       <div class="col-md-6 text-right ml-auto">
-        <div class="dropdown d-flex align-items-center" @click="dropdownFormat">
+        <div
+          class="dropdown d-flex align-items-center"
+          @click="(!showFormat) ? dropdownFormat() : ''"
+        >
           <div class="current">
             <span v-text="format" class="position-static">
               Buy it now
@@ -270,12 +283,15 @@ export default {
   methods: {
     dropdownSource () {
       this.showSource = !this.showSource
+      this.dropDownWatcher(this.showSource, this.dropdownSource)
     },
     dropdownCondition () {
       this.showCondition = !this.showCondition
+      this.dropDownWatcher(this.showCondition, this.dropdownCondition)
     },
     dropdownFormat () {
       this.showFormat = !this.showFormat
+      this.dropDownWatcher(this.showFormat, this.dropdownFormat)
     },
     setSource (target) {
       this.source = target.getAttribute('data-source')
@@ -289,6 +305,15 @@ export default {
     showSettings () {
       this.settings = !this.settings
       this.$root.$emit('showSettings')
+    },
+    dropDownWatcher (condition, action) {
+      setTimeout(() => {
+        if (condition) {
+          document.addEventListener('click', action)
+        } else {
+          document.removeEventListener('click', action)
+        }
+      }, 300)
     }
   }
 }
